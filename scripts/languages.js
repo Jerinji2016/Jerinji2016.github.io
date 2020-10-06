@@ -41,8 +41,8 @@ window.onload = function () {
         setStyle(item);
     });
 
-    if(isElementInViewport(document.getElementById('language-container')))
-    addAnimations();
+    if (isElementInViewport(document.getElementById('language-container')))
+        addAnimations();
 
     document.getElementsByTagName('head')[0].appendChild(style);
 }
@@ -63,17 +63,17 @@ function addAnimations() {
 function isElementInViewport(el) {
     // special bonus for those using jQuery
     if (typeof jQuery === "function" && el instanceof jQuery) {
-      el = el[0];
+        el = el[0];
     }
     var rect = el.getBoundingClientRect();
     return (
-      (rect.top <= 0
-        && rect.bottom >= 0)
-      ||
-      (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight))
-      ||
-      (rect.top >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+        (rect.top <= 0
+            && rect.bottom >= 0)
+        ||
+        (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+        ||
+        (rect.top >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
     );
-  }
+}
