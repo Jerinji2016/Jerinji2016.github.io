@@ -37,43 +37,34 @@ var setStyle = (lang) => {
 }
 
 window.onload = function () {
-    lang.map((item) => {
-        setStyle(item);
-    });
+    lang.map((item) => 
+        setStyle(item));
 
-    if (isElementInViewport(document.getElementById('language-container')))
-        addAnimations();
+    if (isElementInViewport(document.getElementById('language-container'))) {
+        console.log("in screen");
+        languageProgressAnimation();
+    }
 
     document.getElementsByTagName('head')[0].appendChild(style);
 }
 
-function addAnimations() {
+window.onscroll = function () {
+    languageProgressAnimation();
+}
+
+function languageProgressAnimation() {
     lang.map((item) => {
         let div = document.getElementById(item.name);
         let span = div.parentNode.parentNode.childNodes[3];
         span.innerHTML = item.remark;
 
-        div.style.animation = `${item.name} 2s ease-in-out`;
-
-        div.style.width = `${item.val}%`;
+        if (isElementInViewport(div)) {
+            div.style.animation = `${item.name} 1s ease-in-out`;
+            div.style.width = `${item.val}%`;
+        } else {
+            div.style.animation = "";
+            div.style.width = `0%`;    
+        }
     });
     animAdded = false;
-}
-
-function isElementInViewport(el) {
-    // special bonus for those using jQuery
-    if (typeof jQuery === "function" && el instanceof jQuery) {
-        el = el[0];
-    }
-    var rect = el.getBoundingClientRect();
-    return (
-        (rect.top <= 0
-            && rect.bottom >= 0)
-        ||
-        (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight))
-        ||
-        (rect.top >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
-    );
 }
