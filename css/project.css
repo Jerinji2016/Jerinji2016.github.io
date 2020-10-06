@@ -40,6 +40,8 @@
 }
 
 
+/* Media Queries */
+
 @media screen and (max-width: 600px){
     .project {
         width: 80vw;

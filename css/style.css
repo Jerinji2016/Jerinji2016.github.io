@@ -103,6 +103,9 @@ margin-right: 10px;
     align-items: center;
 }
 
+
+/* Media Queries */
+
 @media screen and (max-width: 600px){
     .dp-container {
         justify-content: flex-end;
