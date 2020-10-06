@@ -2,6 +2,7 @@ html {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -96,18 +97,17 @@ body {
     background-color: rgba(0, 0, 0, 0.712);
 }
 
-@media screen and (max-width: 600px) and (min-width: 400px) {
+@media screen and (max-width: 600px) {
     .dp-container {
-        padding-left: 140px;
-        height: 45vh;
+        padding-left: 100px;
+        height: 65vh;
         padding-right: 0px;
     }
 
     .header-container {
         border-radius: 0px 0px 210px 450px;
         background-attachment: fixed;
-        background-size: 170%;
+        background-size: 190%;
         background-position: top;
     }
 }
-

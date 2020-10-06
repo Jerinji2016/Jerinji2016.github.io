@@ -1,7 +1,6 @@
 .topnav {
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.411);
-    transition: .7s;
 }
 
 .topnav a {
@@ -12,11 +11,13 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    transition: .7s;
 }
 
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: transparent;
     color: black;
+    transform: translateY(-5px) scale(1.1);
 }
 
 .topnav a.active {
