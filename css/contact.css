@@ -1,0 +1,29 @@
+.contact-container {
+    justify-content: center;
+}
+.contact-wrapper {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px 30px;
+}
+.sub-contact{
+    padding: 8px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+.sub-contact a {
+    text-decoration: none;
+    width: 100%;
+}
+.sub-contact:hover {
+    text-shadow: 0px 0px 4px rgba(247, 247, 247, 0.651);
+}
+.sub-contact i {
+    width: 40px;
+    text-align: center;
+    font-size: 1.5em;
+}

@@ -1,4 +1,4 @@
-class Lang {
+class Language {
     constructor(name, val, remark) {
         this.name = name;
         this.val = val;
@@ -7,16 +7,16 @@ class Lang {
 }
 
 var lang = [
-    new Lang("c", 60, "Great"),
-    new Lang("flutter", 80, "Great"),
-    new Lang("java", 85, "Great"),
-    new Lang("js", 75, "Good"),
-    new Lang("html_css", 70, "Average"),
-    new Lang("php", 60, "Good"),
-    new Lang("git", 50, "Amateur"),
-    new Lang("ember", 30, "Noob"),
-    new Lang("python", 30, "Noob"),
-    new Lang('mysql', 90, "Awesome")
+    new Language("c", 60, "Great"),
+    new Language("flutter", 80, "Great"),
+    new Language("java", 85, "Great"),
+    new Language("js", 75, "Good"),
+    new Language("html_css", 70, "Average"),
+    new Language("php", 60, "Good"),
+    new Language("git", 50, "Amateur"),
+    new Language("ember", 30, "Noob"),
+    new Language("python", 30, "Noob"),
+    new Language('mysql', 90, "Awesome")
 ];
 
 var style = document.createElement('style');
@@ -36,14 +36,12 @@ var setStyle = (lang) => {
     style.innerHTML += anim;
 }
 
-window.onload = function () {
-    lang.map((item) => 
-        setStyle(item));
+function skillOnLoad() {
+    console.log("skill onload");
+    lang.map((item) => setStyle(item));
 
-    if (isElementInViewport(document.getElementById('language-container'))) {
-        console.log("in screen");
+    if (isElementInViewport(document.getElementById('language-container')))
         languageProgressAnimation();
-    }
 
     document.getElementsByTagName('head')[0].appendChild(style);
 }
@@ -63,7 +61,7 @@ function languageProgressAnimation() {
             div.style.width = `${item.val}%`;
         } else {
             div.style.animation = "";
-            div.style.width = `0%`;    
+            div.style.width = `0%`;
         }
     });
     animAdded = false;

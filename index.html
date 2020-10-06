@@ -23,6 +23,7 @@
     <script src="scripts/nav-bar.js"></script>
 
     <script src="scripts/languages.js"></script>
+    <script src="scripts/projects.js"></script>
 </head>
 
 <body>
@@ -130,20 +131,45 @@
         </div>
     </div>
 
-    <div class="sub-container" data-aos="fade-right">
-        <div class="sub-container-heading" id="projects">
+    <div class="sub-container" data-aos="fade-right" id="projects">
+        <div class="sub-container-heading">
             My Projects
+        </div>
+        <div class="project-wrapper" data-aos="fade-up" id="project-container">
+
         </div>
     </div>
 
-    <div class="sub-container" data-aos="fade-up">
-        <div class="sub-container-heading" id="contact">
+    <div class="sub-container contact-container" data-aos="fade-up" id="contact">
+        <div class="sub-container-heading">
             Coffee Together?
+        </div>
+        <div class="contact-wrapper">
+            <div class="sub-contact">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <a href="mailto:jerinji2016@gmail.com">jerinji2016@gmail.com</a>
+            </div>
+            <div class="sub-contact">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                <a href="tel:+917012788627">+91 7012788627</a>
+            </div>
+            <div class="sub-contact">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/Jerinji2016">Jerinji2016</a>
+            </div>
+            <div class="sub-contact">
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <a href="https://t.me/Jerinji2016">@Jerinji2016</a>
+            </div>
+            <div class="sub-contact">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <a href="https://www.instagram.com/_jerin98_/">@_jerin98_</a>
+            </div>
         </div>
     </div>
 
     <div class="footer-container">
-
+        ❤ Made out of frustration ❤
     </div>
 </body>
 
@@ -153,4 +179,9 @@
     AOS.init({
         duration: 1200,
     });
+
+    window.onload = function () {
+        skillOnLoad();
+        projectOnLoad();
+    }
 </script>
