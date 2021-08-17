@@ -43,7 +43,7 @@ const projects = [
     },
     {
         title: "Te Amo",
-        desc: "Te Amo is a chat application that for Android and iOS which has a innovative UI (atleast thats what I say) and almost all basic features of a Chat Application. It is still under-construction and has enough bugs for all the release versions",
+        desc: "Te Amo is a chat application that for Android and iOS which has a innovative UI (atleast thats what I say) and almost all basic features of a Chat Application. It is still under-development and has enough bugs for all the release versions",
         langs: "Dart, Node.js, Firebase",
     },
     {
