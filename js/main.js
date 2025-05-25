@@ -202,7 +202,7 @@ class PortfolioApp {
                     <p class="about-bio">${personal.bio}</p>
                     <div class="about-stats">
                         <div class="stat">
-                            <span class="stat-number">${portfolioData.projects.length}</span>
+                            <span class="stat-number">${portfolioUtils.getProjectCount()}</span>
                             <span class="stat-label">Projects Completed</span>
                         </div>
                         <div class="stat">
@@ -265,11 +265,61 @@ class PortfolioApp {
 
         console.log('Projects container found, projects data:', portfolioData.projects);
 
-        // Create projects HTML
-        let projectsHTML = '<div class="projects-grid">';
+        // Create categorized projects HTML
+        let projectsHTML = '<div class="projects-categories">';
 
-        portfolioData.projects.forEach(project => {
-            projectsHTML += `
+        // Fun Projects Section
+        projectsHTML += `
+            <div class="project-category fun-projects">
+                <div class="category-header">
+                    <h3 class="category-title">🎮 Fun Projects</h3>
+                    <p class="category-subtitle">"The ones that brought joy and creativity"</p>
+                </div>
+                <div class="projects-grid">
+                    ${this.renderProjectCards(portfolioData.projects.funProjects, 'fun')}
+                </div>
+            </div>
+        `;
+
+        // Projects That Made Me Cry Section
+        projectsHTML += `
+            <div class="project-category cry-projects">
+                <div class="category-header">
+                    <h3 class="category-title">😭 Projects That Made Me Cry</h3>
+                    <p class="category-subtitle">"The ones that tested my sanity but made me stronger"</p>
+                </div>
+                <div class="projects-grid">
+                    ${this.renderProjectCards(portfolioData.projects.projectsThatMadeMeCry, 'cry')}
+                </div>
+            </div>
+        `;
+
+        projectsHTML += '</div>';
+        projectsContainer.innerHTML = projectsHTML;
+
+        // Add animation classes to make projects visible
+        setTimeout(() => {
+            const projectCards = projectsContainer.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 100);
+            });
+        }, 200);
+
+        console.log('Projects section populated successfully');
+    }
+
+    renderProjectCards(projects, categoryType) {
+        return projects.map(project => {
+            const linksHTML = this.generateProjectLinks(project);
+            const cryReasonHTML = categoryType === 'cry' && project.whyItMadeMeCry ?
+                `<div class="cry-reason">
+                    <div class="cry-label">Why it made me cry:</div>
+                    <div class="cry-text">${project.whyItMadeMeCry}</div>
+                </div>` : '';
+
+            return `
                 <div class="project-card" data-project="${project.id}">
                     <div class="project-header">
                         <div class="project-icon" style="color: ${project.color}">
@@ -288,23 +338,42 @@ class PortfolioApp {
                             ${project.features.map(feature => `<li>${feature}</li>`).join('')}
                         </ul>
                     </div>
+                    ${project.techStack ? `
+                        <div class="tech-stack-info">
+                            <div class="tech-stack-label">Tech Stack Breakdown:</div>
+                            <div class="tech-stack-text">${project.techStack}</div>
+                        </div>
+                    ` : ''}
+                    ${cryReasonHTML}
+                    ${linksHTML}
                 </div>
             `;
-        });
+        }).join('');
+    }
 
-        projectsHTML += '</div>';
-        projectsContainer.innerHTML = projectsHTML;
+    generateProjectLinks(project) {
+        let linksHTML = '<div class="project-links">';
 
-        // Add animation classes to make projects visible
-        setTimeout(() => {
-            const projectCards = projectsContainer.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                card.classList.add('animate');
-            });
-        }, 100);
+        if (project.liveDemo) {
+            linksHTML += `
+                <a href="${project.liveDemo}" class="project-link live-demo" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                    Live Demo
+                </a>
+            `;
+        }
 
-        console.log('Projects section populated successfully');
+        if (project.github) {
+            linksHTML += `
+                <a href="${project.github}" class="project-link github-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            `;
+        }
 
+        linksHTML += '</div>';
+        return linksHTML;
     }
 
     populateContactSection() {

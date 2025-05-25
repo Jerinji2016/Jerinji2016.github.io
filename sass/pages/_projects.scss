@@ -6,21 +6,148 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
+// Project Categories Container
+.projects-categories {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3xl;
+  // Add padding to prevent cropping of scaled cards
+  padding: $spacing-lg 0;
+}
+
+.project-category {
+  margin-bottom: $spacing-3xl;
+  // Ensure proper overflow handling for scaled cards
+  overflow: visible;
+
+  .category-header {
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+
+    .category-title {
+      font-size: 2.5rem;
+      font-family: $font-heading;
+      margin-bottom: $spacing-md;
+      background: linear-gradient(135deg, $primary-cyan, $primary-magenta);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      @include mobile {
+        font-size: 2rem;
+      }
+    }
+
+    .category-subtitle {
+      font-size: 1.2rem;
+      color: $gray-light;
+      font-style: italic;
+      opacity: 0.8;
+
+      @include mobile {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Fun Projects - Bright and playful
+  &.fun-projects {
+    .category-title {
+      background: linear-gradient(135deg, #4ECDC4, #45B7D1, #96CEB4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .project-card {
+      // Use glassmorphic effect with fun project border colors - soft teal/blue
+      @include glass-effect(0.2);
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(78, 205, 196, 0.3); // Soft teal
+
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(78, 205, 196, 0.3);
+        border-color: rgba(78, 205, 196, 0.6);
+      }
+    }
+  }
+
+  // Projects That Made Me Cry - Darker, more serious
+  &.cry-projects {
+    .category-title {
+      background: linear-gradient(135deg, #6C7B7F, #8E8E93, #5A6C7D);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .category-subtitle {
+      color: #8E8E93; // Muted gray instead of red
+    }
+
+    .project-card {
+      // Use glassmorphic effect with cry project border colors - muted gray/blue
+      @include glass-effect(0.2);
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(108, 123, 127, 0.3); // Muted gray-blue
+
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(108, 123, 127, 0.3);
+        border-color: rgba(108, 123, 127, 0.6);
+      }
+
+      .cry-reason {
+        margin-top: $spacing-md;
+        padding: $spacing-sm;
+        background: rgba(108, 123, 127, 0.1); // Muted gray-blue background
+        border-left: 3px solid #8E8E93; // Muted gray border
+        border-radius: $border-radius-sm;
+
+        .cry-label {
+          font-size: $font-size-xs;
+          color: #8E8E93; // Muted gray instead of red
+          font-weight: $font-weight-bold;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 4px;
+        }
+
+        .cry-text {
+          font-size: $font-size-sm;
+          color: $gray-light;
+          font-style: italic;
+        }
+      }
+    }
+  }
+}
+
 .projects-grid {
   @include grid-auto-fit(400px, $spacing-xl);
+  // Add padding to prevent cropping during hover scale effects
+  padding: $spacing-lg;
 
   @include mobile {
     @include grid-auto-fit(300px, $spacing-lg);
+    padding: $spacing-md;
   }
 }
 
 .project-card {
-  @include card-style;
-  @include hover-lift;
+  // Base card styling - will be overridden by category-specific styles
+  @include glass-effect(0.2);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl;
+  transition: transform $transition-normal, box-shadow $transition-normal, border-color $transition-normal;
   cursor: none;
 
   &:hover {
-    border-color: $primary-cyan;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
   }
 }
 
@@ -200,6 +327,55 @@
     &:hover {
       background: color.scale($primary-cyan, $lightness: 20%);
     }
+  }
+
+  &.live-demo {
+    background: transparent;
+    color: $primary-cyan;
+    border: 1px solid $primary-cyan;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      background: $primary-cyan;
+      color: $black;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba($primary-cyan, 0.4);
+    }
+  }
+
+  &.github-link {
+    background: transparent;
+    color: $gray-light;
+    border: 1px solid $gray-medium;
+
+    &:hover {
+      background: $gray-medium;
+      color: $white;
+      border-color: $gray-light;
+    }
+  }
+}
+
+.tech-stack-info {
+  margin-top: $spacing-md;
+  padding: $spacing-sm;
+  background: rgba($primary-cyan, 0.05);
+  border-radius: $border-radius-sm;
+  border-left: 3px solid $primary-cyan;
+
+  .tech-stack-label {
+    font-size: $font-size-xs;
+    color: $primary-cyan;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .tech-stack-text {
+    font-size: $font-size-sm;
+    color: $gray-light;
+    font-family: $font-mono;
   }
 }
 
