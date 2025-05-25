@@ -2,6 +2,8 @@
 // ANIMATIONS & KEYFRAMES
 // ===================================
 
+@use '../abstracts/variables' as *;
+
 // Fade animations
 @keyframes fadeIn {
   from {

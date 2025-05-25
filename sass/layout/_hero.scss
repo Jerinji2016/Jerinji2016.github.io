@@ -2,12 +2,15 @@
 // HERO SECTION LAYOUT
 // ===================================
 
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 .hero {
   height: 100vh;
   @include flex-center;
   text-align: center;
   position: relative;
-  
+
   // Three.js canvas background
   #three-canvas {
     @include fixed-full;
@@ -19,7 +22,7 @@
   max-width: 800px;
   padding: 0 $spacing-lg;
   z-index: $z-index-content;
-  
+
   @include mobile {
     padding: 0 $spacing-md;
   }
@@ -35,14 +38,14 @@
     @include text-gradient($gradient-hero);
     animation: gradientShift $animation-very-slow ease-in-out infinite;
   }
-  
+
   .subtitle {
     font-size: $font-size-subtitle;
     margin-bottom: $spacing-xl;
     color: $gray-light;
     font-weight: $font-weight-light;
   }
-  
+
   .description {
     font-size: $font-size-lg;
     line-height: 1.6;
@@ -73,7 +76,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   animation: bounce 2s infinite;
-  
+
   &::after {
     content: '';
     width: 2px;
@@ -82,7 +85,7 @@
     margin-top: $spacing-sm;
     animation: scrollLine 2s ease-in-out infinite;
   }
-  
+
   @include mobile {
     bottom: $spacing-lg;
   }
@@ -132,7 +135,7 @@
     height: 100vh;
     padding: $spacing-xl $spacing-md;
   }
-  
+
   .hero-content {
     max-width: 100%;
   }

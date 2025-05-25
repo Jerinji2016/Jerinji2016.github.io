@@ -2,6 +2,10 @@
 // TYPOGRAPHY
 // ===================================
 
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 // Base Typography
 // ===================================
 
@@ -66,21 +70,21 @@ h6 {
 
 p {
   margin-bottom: $spacing-md;
-  
+
   &.subtitle {
     font-size: $font-size-subtitle;
     margin-bottom: $spacing-xl;
     color: $gray-light;
     font-weight: $font-weight-light;
   }
-  
+
   &.description {
     font-size: $font-size-lg;
     line-height: 1.6;
     margin-bottom: $spacing-2xl;
     color: $gray-medium;
   }
-  
+
   &.intro {
     font-size: $font-size-lg;
     line-height: 1.6;
@@ -96,12 +100,12 @@ a {
   color: $primary-cyan;
   text-decoration: none;
   transition: all $transition-normal;
-  
+
   &:hover {
-    color: lighten($primary-cyan, 20%);
+    color: color.scale($primary-cyan, $lightness: 40%);
     @include text-glow($primary-cyan);
   }
-  
+
   &:focus {
     outline: 2px solid $primary-cyan;
     outline-offset: 2px;
@@ -114,10 +118,10 @@ a {
 ul,
 ol {
   padding-left: $spacing-lg;
-  
+
   li {
     color: $gray-medium;
-    
+
     &::marker {
       color: $primary-cyan;
     }
@@ -132,7 +136,7 @@ ol {
 
 .list-inline {
   @extend .list-unstyled;
-  
+
   li {
     display: inline-block;
     margin-right: $spacing-md;

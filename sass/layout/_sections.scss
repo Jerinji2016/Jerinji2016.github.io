@@ -2,6 +2,9 @@
 // SECTION LAYOUTS
 // ===================================
 
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 // Main content container
 .content {
   position: relative;
@@ -14,7 +17,7 @@
   min-height: 100vh;
   padding: $section-padding;
   @include flex-center;
-  
+
   @include mobile {
     padding: $section-padding-mobile;
   }
@@ -23,7 +26,7 @@
 .section-content {
   max-width: 1200px;
   width: 100%;
-  
+
   @include mobile {
     max-width: 100%;
   }
@@ -64,7 +67,7 @@
 .section-sm {
   min-height: auto;
   padding: $spacing-3xl $spacing-2xl;
-  
+
   @include mobile {
     padding: $spacing-2xl $spacing-md;
   }
@@ -73,7 +76,7 @@
 .section-lg {
   min-height: 120vh;
   padding: 120px 50px;
-  
+
   @include mobile {
     padding: 100px 20px;
   }
@@ -84,7 +87,7 @@
   opacity: 0;
   transform: translateY(50px);
   transition: all 1s ease-out;
-  
+
   &.in-view {
     opacity: 1;
     transform: translateY(0);
@@ -95,7 +98,7 @@
   opacity: 0;
   transform: translateX(-50px);
   transition: all 0.8s ease-out;
-  
+
   &.in-view {
     opacity: 1;
     transform: translateX(0);
@@ -106,7 +109,7 @@
   opacity: 0;
   transform: translateX(50px);
   transition: all 0.8s ease-out;
-  
+
   &.in-view {
     opacity: 1;
     transform: translateX(0);
@@ -123,11 +126,11 @@
     transparent 100%
   );
   margin: $spacing-3xl 0;
-  
+
   &.divider-thick {
     height: 3px;
   }
-  
+
   &.divider-glow {
     box-shadow: 0 0 10px $primary-cyan;
   }
@@ -137,7 +140,7 @@
 .section-parallax {
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -161,11 +164,11 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: $z-index-nav - 1;
-  
+
   @include mobile {
     display: none;
   }
-  
+
   .nav-dot {
     display: block;
     width: 12px;
@@ -175,7 +178,7 @@
     margin: $spacing-md 0;
     transition: all $transition-normal;
     cursor: none;
-    
+
     &:hover,
     &.active {
       background: $primary-cyan;
@@ -191,11 +194,11 @@
     min-height: auto;
     padding: $spacing-3xl $spacing-md;
   }
-  
+
   .section-content {
     padding: 0;
   }
-  
+
   .section h2 {
     margin-bottom: $spacing-2xl;
   }

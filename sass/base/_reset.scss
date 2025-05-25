@@ -5,6 +5,8 @@
 // CSS Reset
 // ===================================
 
+@use '../abstracts/variables' as *;
+
 * {
   margin: 0;
   padding: 0;

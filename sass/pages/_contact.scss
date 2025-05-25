@@ -2,6 +2,9 @@
 // CONTACT PAGE STYLES
 // ===================================
 
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 .contact-grid {
   max-width: 600px;
   margin: 0 auto;
@@ -152,7 +155,7 @@
 
 .form-submit {
   width: 100%;
-  @extend .cta-button;
+  @include button-style;
   margin-top: $spacing-lg;
 }
 

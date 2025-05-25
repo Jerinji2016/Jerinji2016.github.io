@@ -1026,7 +1026,7 @@ select,
     left: 100%;
   }
 }
-.btn, .cta-button, .form-submit {
+.btn, .cta-button {
   display: inline-block;
   padding: 1rem 3rem;
   background: linear-gradient(45deg, #00ffff, #ff00ff);
@@ -1045,21 +1045,21 @@ select,
   white-space: nowrap;
   user-select: none;
 }
-.btn:hover, .cta-button:hover, .form-submit:hover {
+.btn:hover, .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
 }
-.btn:focus, .cta-button:focus, .form-submit:focus {
+.btn:focus, .cta-button:focus {
   outline: 2px solid #00ffff;
   outline-offset: 2px;
 }
-.btn:disabled, .cta-button:disabled, .form-submit:disabled {
+.btn:disabled, .cta-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.cta-button::before, .form-submit::before {
+.cta-button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1069,14 +1069,14 @@ select,
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s ease;
 }
-.cta-button:hover::before, .form-submit:hover::before {
+.cta-button:hover::before {
   left: 100%;
 }
-.cta-button.btn-sm, .btn-sm.form-submit {
+.cta-button.btn-sm {
   padding: 0.5rem 1.5rem;
   font-size: 14px;
 }
-.cta-button.btn-lg, .btn-lg.form-submit {
+.cta-button.btn-lg {
   padding: 1.5rem 4rem;
   font-size: 18px;
 }
@@ -1218,11 +1218,11 @@ select,
 }
 
 @media (max-width: 768px) {
-  .btn, .cta-button, .form-submit {
+  .btn, .cta-button {
     padding: 0.5rem 1.5rem;
     font-size: 14px;
   }
-  .cta-button.btn-lg, .btn-lg.form-submit {
+  .cta-button.btn-lg {
     padding: 1rem 2rem;
     font-size: 16px;
   }
@@ -1607,7 +1607,7 @@ select,
   color: #61dafb;
 }
 .skill-category.frontend .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #61dafb, rgb(196.4814814815, 241.2962962963, 253.5185185185));
+  background: linear-gradient(90deg, #61dafb, rgb(160.2, 232.8, 252.6));
 }
 .skill-category.backend {
   border-color: rgba(104, 211, 145, 0.3);
@@ -1616,7 +1616,7 @@ select,
   color: #68d391;
 }
 .skill-category.backend .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #68d391, rgb(182.9846153846, 234.0153846154, 202.5384615385));
+  background: linear-gradient(90deg, #68d391, rgb(164.4, 228.6, 189));
 }
 .skill-category.mobile {
   border-color: rgba(240, 147, 251, 0.3);
@@ -1625,7 +1625,7 @@ select,
   color: #f093fb;
 }
 .skill-category.mobile .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #f093fb, rgb(253.6607142857, 245.3571428571, 254.6428571429));
+  background: linear-gradient(90deg, #f093fb, rgb(246, 190.2, 252.6));
 }
 .skill-category.tools {
   border-color: rgba(255, 217, 61, 0.3);
@@ -1634,7 +1634,7 @@ select,
   color: #ffd93d;
 }
 .skill-category.tools .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #ffd93d, rgb(255, 236.9793814433, 163));
+  background: linear-gradient(90deg, #ffd93d, rgb(255, 232.2, 138.6));
 }
 
 .skill-item.animate .skill-bar .skill-progress {
@@ -2250,7 +2250,21 @@ select,
 
 .form-submit {
   width: 100%;
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   margin-top: 1.5rem;
+}
+.form-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
 }
 
 .social-links {

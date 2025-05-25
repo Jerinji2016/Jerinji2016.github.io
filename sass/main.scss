@@ -4,31 +4,31 @@
 // ===================================
 
 // Abstracts - Variables, mixins, functions
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
 
 // Base - Reset, typography, base styles
-@import 'base/reset';
-@import 'base/typography';
+@use 'base/reset';
+@use 'base/typography';
 
 // Layout - Grid, header, footer, navigation
-@import 'layout/hero';
-@import 'layout/sections';
+@use 'layout/hero';
+@use 'layout/sections';
 
 // Components - Buttons, cards, modals, etc.
-@import 'components/navigation';
-@import 'components/cursor';
-@import 'components/loading';
-@import 'components/buttons';
+@use 'components/navigation';
+@use 'components/cursor';
+@use 'components/loading';
+@use 'components/buttons';
 
 // Pages - Page-specific styles
-@import 'pages/about';
-@import 'pages/skills';
-@import 'pages/projects';
-@import 'pages/contact';
+@use 'pages/about';
+@use 'pages/skills';
+@use 'pages/projects';
+@use 'pages/contact';
 
 // Utilities - Animations, helpers, utilities
-@import 'utilities/animations';
+@use 'utilities/animations';
 
 // ===================================
 // THREE.JS CANVAS STYLES
@@ -178,10 +178,10 @@
   .mobile\:d-none { display: none; }
   .mobile\:d-block { display: block; }
   .mobile\:d-flex { display: flex; }
-  
+
   .mobile\:text-center { text-align: center; }
   .mobile\:text-left { text-align: left; }
-  
+
   .mobile\:flex-column { flex-direction: column; }
   .mobile\:flex-row { flex-direction: row; }
 }
@@ -215,7 +215,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .section h2 {
     color: $white;
     text-shadow: none;
@@ -233,12 +233,12 @@
   #three-canvas {
     display: none !important;
   }
-  
+
   body {
     background: $white !important;
     color: $black !important;
   }
-  
+
   .section {
     page-break-inside: avoid;
     padding: $spacing-lg !important;

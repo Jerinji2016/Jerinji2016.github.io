@@ -2,6 +2,9 @@
 // LOADING SCREEN COMPONENT
 // ===================================
 
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 .loading {
   @include fixed-full;
   background: $bg-primary;
