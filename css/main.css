@@ -1488,14 +1488,12 @@ select,
 }
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
 }
 @media (max-width: 768px) {
   .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
   }
 }
@@ -1511,6 +1509,7 @@ select,
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  width: 100%;
 }
 .skill-category:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1519,6 +1518,17 @@ select,
 .skill-category:hover:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+}
+.skill-category .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+@media (max-width: 768px) {
+  .skill-category .skills-list {
+    gap: 0.5rem;
+  }
 }
 
 .category-title {
@@ -1534,33 +1544,71 @@ select,
 }
 
 .skill-item {
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  flex: 0 0 auto;
+  text-align: center;
 }
-.skill-item:last-child {
-  margin-bottom: 0;
+@media (max-width: 768px) {
+  .skill-item {
+    min-width: 120px;
+    padding: 0.5rem;
+  }
+}
+.skill-item:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
 }
 
 .skill-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 .skill-header i {
-  font-size: 20px;
-  margin-right: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+@media (max-width: 768px) {
+  .skill-header i {
+    font-size: 1.5rem;
+  }
 }
 
 .skill-name {
-  flex: 1;
   font-weight: 600;
   color: #fff;
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+@media (max-width: 768px) {
+  .skill-name {
+    font-size: 12px;
+  }
 }
 
 .skill-description {
-  font-size: 14px;
+  font-size: 12px;
   color: #aaa;
-  line-height: 1.4;
+  line-height: 1.3;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .skill-description {
+    font-size: 10px;
+    line-height: 1.2;
+  }
 }
 
 .skill-category.frameworks {

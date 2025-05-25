@@ -158,6 +158,7 @@ class PortfolioApp {
         skillCategories.forEach(category => {
             const categorySkills = portfolioData.skills.filter(skill => skill.category === category);
             const categoryClass = category.toLowerCase().replace(/\s+/g, '-');
+
             skillsHTML += `
                 <div class="skill-category ${categoryClass}">
                     <h3 class="category-title">${category}</h3>

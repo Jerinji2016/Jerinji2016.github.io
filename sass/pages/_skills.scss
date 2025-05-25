@@ -7,20 +7,34 @@
 @use '../abstracts/mixins' as *;
 
 .skills-grid {
-  @include grid-auto-fit(300px, $spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
 
   @include mobile {
-    @include grid-auto-fit(280px, $spacing-xl);
+    gap: $spacing-xl;
   }
 }
 
 .skill-category {
   @include card-style;
   transition: all $transition-normal;
+  width: 100%;
 
   &:hover {
     @include hover-lift;
     border-color: $primary-cyan;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    justify-content: flex-start;
+
+    @include mobile {
+      gap: $spacing-sm;
+    }
   }
 }
 
@@ -38,33 +52,69 @@
 }
 
 .skill-item {
-  margin-bottom: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-md;
+  background: rgba($white, 0.03);
+  border: 1px solid rgba($white, 0.1);
+  border-radius: $border-radius-lg;
+  transition: all $transition-normal;
+  min-width: 140px;
+  flex: 0 0 auto;
+  text-align: center;
 
-  &:last-child {
-    margin-bottom: 0;
+  @include mobile {
+    min-width: 120px;
+    padding: $spacing-sm;
+  }
+
+  &:hover {
+    background: rgba($primary-cyan, 0.1);
+    border-color: rgba($primary-cyan, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba($primary-cyan, 0.15);
   }
 }
 
 .skill-header {
-  @include flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: $spacing-sm;
+  width: 100%;
 
   i {
-    font-size: 20px;
-    margin-right: $spacing-sm;
+    font-size: 2rem;
+    margin-bottom: $spacing-xs;
+
+    @include mobile {
+      font-size: 1.5rem;
+    }
   }
 }
 
 .skill-name {
-  flex: 1;
   font-weight: $font-weight-semibold;
   color: $white;
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-xs;
+
+  @include mobile {
+    font-size: $font-size-xs;
+  }
 }
 
 .skill-description {
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
   color: $gray-medium;
-  line-height: 1.4;
+  line-height: 1.3;
+  text-align: center;
+
+  @include mobile {
+    font-size: 10px;
+    line-height: 1.2;
+  }
 }
 
 // Skill categories with specific styling
