@@ -30,7 +30,7 @@ const portfolioData = {
             category: "Frameworks",
             description: "React framework for production",
             color: "#000000",
-            icon: "fab fa-react"
+            icon: "fas fa-layer-group"
         },
         {
             id: "nestjs",
@@ -46,7 +46,7 @@ const portfolioData = {
             category: "Frameworks",
             description: "Lightweight Python web framework",
             color: "#000000",
-            icon: "fab fa-python"
+            icon: "fas fa-flask"
         },
         {
             id: "hugo",
@@ -80,7 +80,7 @@ const portfolioData = {
             category: "Languages",
             description: "Native Android development",
             color: "#3ddc84",
-            icon: "fab fa-android"
+            icon: "fas fa-robot"
         },
         {
             id: "javascript",
@@ -88,7 +88,7 @@ const portfolioData = {
             category: "Languages",
             description: "Dynamic programming language",
             color: "#f7df1e",
-            icon: "fab fa-js-square"
+            icon: "fas fa-code"
         },
         {
             id: "typescript",
@@ -96,7 +96,7 @@ const portfolioData = {
             category: "Languages",
             description: "Typed superset of JavaScript",
             color: "#3178c6",
-            icon: "fab fa-js-square"
+            icon: "fas fa-file-code"
         },
         {
             id: "java",
@@ -104,7 +104,7 @@ const portfolioData = {
             category: "Languages",
             description: "Enterprise applications, Android",
             color: "#ed8b00",
-            icon: "fab fa-java"
+            icon: "fas fa-coffee"
         },
         {
             id: "php",
@@ -112,7 +112,7 @@ const portfolioData = {
             category: "Languages",
             description: "Server-side scripting language",
             color: "#777bb4",
-            icon: "fab fa-php"
+            icon: "fas fa-code"
         },
         {
             id: "python",
@@ -120,7 +120,7 @@ const portfolioData = {
             category: "Languages",
             description: "Versatile programming language",
             color: "#3776ab",
-            icon: "fab fa-python"
+            icon: "fas fa-code"
         },
         {
             id: "ruby",
@@ -188,7 +188,7 @@ const portfolioData = {
             category: "Tools",
             description: "Version control system",
             color: "#f05032",
-            icon: "fab fa-git-alt"
+            icon: "fas fa-code-branch"
         },
         {
             id: "fastlane",

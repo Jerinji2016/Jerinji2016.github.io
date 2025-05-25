@@ -10,9 +10,14 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-2xl;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  padding-top: 10px; // Space for hover animation
 
   @include mobile {
     gap: $spacing-xl;
+    padding-top: 8px;
   }
 }
 
@@ -20,6 +25,9 @@
   @include card-style;
   transition: all $transition-normal;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 
   &:hover {
     @include hover-lift;
@@ -30,7 +38,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-md;
-    justify-content: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 
     @include mobile {
       gap: $spacing-sm;
@@ -55,17 +66,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   padding: $spacing-md;
   background: rgba($white, 0.03);
   border: 1px solid rgba($white, 0.1);
   border-radius: $border-radius-lg;
   transition: all $transition-normal;
   min-width: 140px;
-  flex: 0 0 auto;
+  max-width: 140px;
+  min-height: 120px;
+  flex: 0 0 140px;
   text-align: center;
 
   @include mobile {
     min-width: 120px;
+    max-width: 120px;
+    flex: 0 0 120px;
+    min-height: 110px;
     padding: $spacing-sm;
   }
 
@@ -125,6 +142,11 @@
     .category-title {
       color: #02569b;
     }
+
+    &:hover {
+      border-color: #02569b;
+      box-shadow: 0 15px 35px rgba(#02569b, 0.2);
+    }
   }
 
   &.languages {
@@ -132,6 +154,11 @@
 
     .category-title {
       color: #f7df1e;
+    }
+
+    &:hover {
+      border-color: #f7df1e;
+      box-shadow: 0 15px 35px rgba(#f7df1e, 0.2);
     }
   }
 
@@ -141,6 +168,11 @@
     .category-title {
       color: #336791;
     }
+
+    &:hover {
+      border-color: #336791;
+      box-shadow: 0 15px 35px rgba(#336791, 0.2);
+    }
   }
 
   &.tools {
@@ -148,6 +180,11 @@
 
     .category-title {
       color: #f05032;
+    }
+
+    &:hover {
+      border-color: #f05032;
+      box-shadow: 0 15px 35px rgba(#f05032, 0.2);
     }
   }
 }

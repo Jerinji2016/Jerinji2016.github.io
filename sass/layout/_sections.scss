@@ -26,6 +26,9 @@
 .section-content {
   max-width: 1200px;
   width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; // Only hide horizontal overflow
+  overflow-y: visible; // Allow vertical overflow for hover animations
 
   @include mobile {
     max-width: 100%;
