@@ -66,18 +66,23 @@
     font-size: $font-size-base;
     transition: all $transition-normal;
     position: relative;
+    padding: $spacing-sm $spacing-md; // Add padding for larger hover area
+    border-radius: $border-radius-sm;
+    display: block; // Ensure full area is hoverable
 
     &:hover {
       color: $primary-cyan;
       @include text-glow($primary-cyan);
+      transform: translateY(-2px); // Subtle upward movement
+      background: rgba($primary-cyan, 0.05); // Subtle background highlight
     }
 
     // Animated underline
     &::after {
       content: '';
       position: absolute;
-      bottom: -5px;
-      left: 0;
+      bottom: 2px; // Adjusted for padding
+      left: $spacing-md;
       width: 0;
       height: 2px;
       background: $gradient-underline;
@@ -85,15 +90,16 @@
     }
 
     &:hover::after {
-      width: 100%;
+      width: calc(100% - #{$spacing-md * 2}); // Account for padding
     }
 
     // Active state
     &.active {
       color: $primary-cyan;
+      transform: translateY(-1px); // Slight elevation for active state
 
       &::after {
-        width: 100%;
+        width: calc(100% - #{$spacing-md * 2});
       }
     }
   }
