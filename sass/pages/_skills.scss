@@ -1,0 +1,241 @@
+// ===================================
+// SKILLS PAGE STYLES
+// ===================================
+
+.skills-grid {
+  @include grid-auto-fit(300px, $spacing-2xl);
+  
+  @include mobile {
+    @include grid-auto-fit(280px, $spacing-xl);
+  }
+}
+
+.skill-category {
+  @include card-style;
+  transition: all $transition-normal;
+  
+  &:hover {
+    @include hover-lift;
+    border-color: $primary-cyan;
+  }
+}
+
+.category-title {
+  color: $primary-cyan;
+  margin-bottom: $spacing-lg;
+  font-size: 1.5rem;
+  font-family: $font-heading;
+  text-align: center;
+  
+  i {
+    margin-right: $spacing-sm;
+    font-size: 1.2em;
+  }
+}
+
+.skill-item {
+  margin-bottom: $spacing-lg;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.skill-header {
+  @include flex-between;
+  margin-bottom: $spacing-sm;
+  
+  i {
+    font-size: 20px;
+    margin-right: $spacing-sm;
+    color: $primary-cyan;
+  }
+}
+
+.skill-name {
+  flex: 1;
+  font-weight: $font-weight-semibold;
+  color: $white;
+}
+
+.skill-percentage {
+  color: $primary-cyan;
+  font-weight: $font-weight-bold;
+  font-family: $font-heading;
+}
+
+.skill-bar {
+  @include skill-bar;
+  margin-bottom: $spacing-sm;
+  
+  .skill-progress {
+    width: 0%;
+    transition: width 1s ease-in-out;
+    
+    // Different colors for different skill levels
+    &[data-level="beginner"] {
+      background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+    }
+    
+    &[data-level="intermediate"] {
+      background: linear-gradient(90deg, #ffa726, #ffcc02);
+    }
+    
+    &[data-level="advanced"] {
+      background: linear-gradient(90deg, $primary-cyan, lighten($primary-cyan, 20%));
+    }
+    
+    &[data-level="expert"] {
+      background: linear-gradient(90deg, #4caf50, #66bb6a);
+    }
+  }
+}
+
+.skill-description {
+  font-size: $font-size-sm;
+  color: $gray-medium;
+  line-height: 1.4;
+}
+
+// Skill categories with specific styling
+.skill-category {
+  &.frontend {
+    border-color: rgba(#61dafb, 0.3);
+    
+    .category-title {
+      color: #61dafb;
+    }
+    
+    .skill-bar .skill-progress {
+      background: linear-gradient(90deg, #61dafb, lighten(#61dafb, 20%));
+    }
+  }
+  
+  &.backend {
+    border-color: rgba(#68d391, 0.3);
+    
+    .category-title {
+      color: #68d391;
+    }
+    
+    .skill-bar .skill-progress {
+      background: linear-gradient(90deg, #68d391, lighten(#68d391, 20%));
+    }
+  }
+  
+  &.mobile {
+    border-color: rgba(#f093fb, 0.3);
+    
+    .category-title {
+      color: #f093fb;
+    }
+    
+    .skill-bar .skill-progress {
+      background: linear-gradient(90deg, #f093fb, lighten(#f093fb, 20%));
+    }
+  }
+  
+  &.tools {
+    border-color: rgba(#ffd93d, 0.3);
+    
+    .category-title {
+      color: #ffd93d;
+    }
+    
+    .skill-bar .skill-progress {
+      background: linear-gradient(90deg, #ffd93d, lighten(#ffd93d, 20%));
+    }
+  }
+}
+
+// Skills animation on scroll
+.skill-item {
+  &.animate {
+    .skill-bar .skill-progress {
+      animation: skillProgress 1.5s ease-in-out forwards;
+    }
+  }
+}
+
+@keyframes skillProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--skill-width);
+  }
+}
+
+// Skills filter (if implemented)
+.skills-filter {
+  @include flex-center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-2xl;
+  
+  @include mobile {
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+}
+
+.filter-btn {
+  padding: $spacing-sm $spacing-lg;
+  background: transparent;
+  color: $gray-light;
+  border: 1px solid $border-primary;
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  transition: all $transition-normal;
+  cursor: none;
+  
+  &:hover,
+  &.active {
+    background: $primary-cyan;
+    color: $black;
+    border-color: $primary-cyan;
+  }
+}
+
+// Skills 3D visualization container
+.skills-3d-container {
+  height: 400px;
+  margin: $spacing-2xl 0;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  position: relative;
+  
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+  
+  @include mobile {
+    height: 300px;
+    margin: $spacing-xl 0;
+  }
+}
+
+// Skills legend
+.skills-legend {
+  @include flex-center;
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+  flex-wrap: wrap;
+  
+  @include mobile {
+    gap: $spacing-md;
+  }
+}
+
+.legend-item {
+  @include flex-center;
+  gap: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $gray-light;
+  
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: $border-radius-sm;
+  }
+}

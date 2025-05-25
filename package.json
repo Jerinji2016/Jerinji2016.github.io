@@ -1,0 +1,25 @@
+{
+  "name": "jerin-portfolio-3d",
+  "version": "1.0.0",
+  "description": "3D Portfolio Website with Three.js and Sass",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass sass/main.scss css/main.css",
+    "sass:watch": "sass --watch sass/main.scss css/main.css",
+    "sass:compressed": "sass sass/main.scss css/main.css --style compressed",
+    "build": "npm run sass:compressed",
+    "dev": "npm run sass:watch"
+  },
+  "keywords": [
+    "portfolio",
+    "three.js",
+    "sass",
+    "3d",
+    "web-development"
+  ],
+  "author": "Jerin P Jimmy",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.69.0"
+  }
+}

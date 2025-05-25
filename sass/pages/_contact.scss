@@ -1,0 +1,280 @@
+// ===================================
+// CONTACT PAGE STYLES
+// ===================================
+
+.contact-grid {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-intro {
+  font-size: $font-size-lg;
+  line-height: 1.6;
+  margin-bottom: $spacing-2xl;
+  color: $gray-light;
+
+  @include mobile {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.contact-methods {
+  display: grid;
+  gap: $spacing-lg;
+
+  @include mobile {
+    gap: $spacing-md;
+  }
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  @include card-style;
+  text-decoration: none;
+  color: $white;
+  transition: all $transition-normal;
+  cursor: none;
+
+  &:hover {
+    background: rgba($primary-cyan, 0.1);
+    transform: translateX(10px);
+    border-color: $primary-cyan;
+  }
+
+  @include mobile {
+    padding: $spacing-md;
+    transform: none;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+.contact-details {
+  text-align: left;
+  flex: 1;
+
+  @include mobile {
+    text-align: center;
+  }
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  margin-left: $spacing-lg;
+  color: $primary-cyan;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+  order: 2; // Move icon to the right
+
+  @include mobile {
+    margin-left: $spacing-md;
+    width: 30px;
+    font-size: 1.25rem;
+  }
+}
+
+.contact-label {
+  display: block;
+  font-size: $font-size-sm;
+  color: $gray-medium;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: $spacing-xs;
+}
+
+.contact-value {
+  display: block;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $white;
+
+  @include mobile {
+    font-size: $font-size-sm;
+  }
+}
+
+// Contact form (if implemented)
+.contact-form {
+  max-width: 500px;
+  margin: $spacing-3xl auto 0;
+
+  @include mobile {
+    margin-top: $spacing-2xl;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  text-align: left;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    color: $primary-cyan;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-sm;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: $spacing-md;
+    background: rgba($white, 0.05);
+    border: 1px solid $border-primary;
+    border-radius: $border-radius-md;
+    color: $white;
+    font-size: $font-size-base;
+    transition: all $transition-normal;
+
+    &::placeholder {
+      color: $gray-medium;
+    }
+
+    &:focus {
+      border-color: $primary-cyan;
+      box-shadow: 0 0 0 2px rgba($primary-cyan, 0.2);
+      background: rgba($white, 0.08);
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+}
+
+.form-submit {
+  width: 100%;
+  @extend .cta-button;
+  margin-top: $spacing-lg;
+}
+
+// Social links
+.social-links {
+  @include flex-center;
+  gap: $spacing-lg;
+  margin-top: $spacing-2xl;
+
+  @include mobile {
+    gap: $spacing-md;
+    margin-top: $spacing-xl;
+  }
+}
+
+.social-link {
+  @include flex-center;
+  width: 50px;
+  height: 50px;
+  background: rgba($white, 0.05);
+  border: 1px solid $border-primary;
+  border-radius: $border-radius-circle;
+  color: $white;
+  text-decoration: none;
+  font-size: 1.25rem;
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $primary-cyan;
+    color: $primary-cyan;
+    box-shadow: 0 10px 20px rgba($primary-cyan, 0.2);
+  }
+
+  &.github:hover {
+    border-color: #333;
+    color: #333;
+    background: $white;
+  }
+
+  &.linkedin:hover {
+    border-color: #0077b5;
+    color: #0077b5;
+    background: $white;
+  }
+
+  &.twitter:hover {
+    border-color: #1da1f2;
+    color: #1da1f2;
+    background: $white;
+  }
+
+  &.email:hover {
+    border-color: #ea4335;
+    color: #ea4335;
+    background: $white;
+  }
+
+  @include mobile {
+    width: 45px;
+    height: 45px;
+    font-size: 1.125rem;
+  }
+}
+
+// Contact availability status
+.availability-status {
+  @include flex-center;
+  gap: $spacing-sm;
+  margin-top: $spacing-xl;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($status-completed, 0.1);
+  border: 1px solid rgba($status-completed, 0.3);
+  border-radius: $border-radius-lg;
+  color: $status-completed;
+  font-size: $font-size-sm;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: $status-completed;
+    border-radius: $border-radius-circle;
+    animation: pulse 2s infinite;
+  }
+
+  &.busy {
+    background: rgba($status-in-development, 0.1);
+    border-color: rgba($status-in-development, 0.3);
+    color: $status-in-development;
+
+    &::before {
+      background: $status-in-development;
+    }
+  }
+
+  &.unavailable {
+    background: rgba(#f44336, 0.1);
+    border-color: rgba(#f44336, 0.3);
+    color: #f44336;
+
+    &::before {
+      background: #f44336;
+    }
+  }
+}
+
+// Contact animations
+.contact-method {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease-out;
+
+  &.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  // Stagger animation delay
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.1}s;
+    }
+  }
+}

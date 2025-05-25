@@ -1,0 +1,231 @@
+// ===================================
+// ABOUT PAGE STYLES
+// ===================================
+
+.about-grid {
+  display: grid;
+  gap: $spacing-2xl;
+  align-items: center;
+  
+  @include mobile {
+    gap: $spacing-xl;
+  }
+}
+
+.about-bio {
+  font-size: $font-size-lg;
+  line-height: 1.8;
+  margin-bottom: $spacing-2xl;
+  color: $gray-light;
+  
+  @include mobile {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// About statistics
+.about-stats {
+  @include grid-auto-fit(150px, $spacing-xl);
+  
+  @include mobile {
+    @include grid-auto-fit(120px, $spacing-lg);
+  }
+}
+
+.stat {
+  text-align: center;
+  padding: $spacing-lg;
+  @include card-style;
+  transition: all $transition-normal;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $primary-cyan;
+    box-shadow: 0 10px 30px rgba($primary-cyan, 0.2);
+  }
+  
+  @include mobile {
+    padding: $spacing-md;
+  }
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: $font-weight-bold;
+  color: $primary-cyan;
+  font-family: $font-heading;
+  margin-bottom: $spacing-sm;
+  
+  @include mobile {
+    font-size: 2rem;
+  }
+}
+
+.stat-label {
+  font-size: $font-size-sm;
+  color: $gray-medium;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// About timeline (if needed)
+.about-timeline {
+  position: relative;
+  padding: $spacing-xl 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $primary-cyan;
+    transform: translateX(-50%);
+    
+    @include mobile {
+      left: $spacing-lg;
+    }
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: $spacing-2xl;
+  
+  &:nth-child(odd) {
+    text-align: right;
+    padding-right: calc(50% + $spacing-xl);
+    
+    @include mobile {
+      text-align: left;
+      padding-right: 0;
+      padding-left: $spacing-2xl;
+    }
+    
+    .timeline-content {
+      margin-right: $spacing-lg;
+      
+      @include mobile {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  &:nth-child(even) {
+    text-align: left;
+    padding-left: calc(50% + $spacing-xl);
+    
+    @include mobile {
+      text-align: left;
+      padding-left: $spacing-2xl;
+    }
+    
+    .timeline-content {
+      margin-left: $spacing-lg;
+      
+      @include mobile {
+        margin-left: 0;
+      }
+    }
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background: $primary-cyan;
+    border-radius: $border-radius-circle;
+    border: 3px solid $bg-primary;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    @include mobile {
+      left: $spacing-lg;
+    }
+  }
+}
+
+.timeline-content {
+  @include card-style;
+  position: relative;
+  
+  h3 {
+    color: $primary-cyan;
+    margin-bottom: $spacing-sm;
+  }
+  
+  .timeline-date {
+    font-size: $font-size-sm;
+    color: $gray-medium;
+    margin-bottom: $spacing-md;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  p {
+    color: $gray-light;
+    line-height: 1.6;
+  }
+}
+
+// About skills preview
+.about-skills-preview {
+  margin-top: $spacing-2xl;
+  
+  h3 {
+    color: $primary-cyan;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+  }
+}
+
+.skills-preview-grid {
+  @include grid-auto-fit(100px, $spacing-md);
+  text-align: center;
+}
+
+.skill-preview {
+  padding: $spacing-md;
+  @include card-style;
+  transition: all $transition-normal;
+  
+  &:hover {
+    transform: scale(1.05);
+    border-color: $primary-cyan;
+  }
+  
+  i {
+    font-size: 2rem;
+    color: $primary-cyan;
+    margin-bottom: $spacing-sm;
+  }
+  
+  .skill-name {
+    font-size: $font-size-sm;
+    color: $gray-light;
+  }
+}
+
+// About CTA section
+.about-cta {
+  text-align: center;
+  margin-top: $spacing-3xl;
+  padding: $spacing-2xl;
+  @include card-style;
+  background: linear-gradient(135deg, rgba($primary-cyan, 0.1), rgba($primary-magenta, 0.1));
+  
+  h3 {
+    color: $primary-cyan;
+    margin-bottom: $spacing-lg;
+  }
+  
+  p {
+    color: $gray-light;
+    margin-bottom: $spacing-xl;
+  }
+}

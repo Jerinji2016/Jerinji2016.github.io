@@ -1,0 +1,290 @@
+// ===================================
+// TYPOGRAPHY
+// ===================================
+
+// Base Typography
+// ===================================
+
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: 1.6;
+  color: $white;
+}
+
+// Headings
+// ===================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include heading-style;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-size-hero;
+  font-weight: $font-weight-black;
+  margin-bottom: $spacing-lg;
+  @include text-gradient;
+}
+
+h2 {
+  font-size: $font-size-section;
+  text-align: center;
+  margin-bottom: $spacing-3xl;
+  @include text-glow;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: $spacing-lg;
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: $spacing-md;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin-bottom: $spacing-md;
+}
+
+h6 {
+  font-size: 1.125rem;
+  margin-bottom: $spacing-sm;
+}
+
+// Paragraphs
+// ===================================
+
+p {
+  margin-bottom: $spacing-md;
+  
+  &.subtitle {
+    font-size: $font-size-subtitle;
+    margin-bottom: $spacing-xl;
+    color: $gray-light;
+    font-weight: $font-weight-light;
+  }
+  
+  &.description {
+    font-size: $font-size-lg;
+    line-height: 1.6;
+    margin-bottom: $spacing-2xl;
+    color: $gray-medium;
+  }
+  
+  &.intro {
+    font-size: $font-size-lg;
+    line-height: 1.6;
+    margin-bottom: $spacing-2xl;
+    color: $gray-light;
+  }
+}
+
+// Links
+// ===================================
+
+a {
+  color: $primary-cyan;
+  text-decoration: none;
+  transition: all $transition-normal;
+  
+  &:hover {
+    color: lighten($primary-cyan, 20%);
+    @include text-glow($primary-cyan);
+  }
+  
+  &:focus {
+    outline: 2px solid $primary-cyan;
+    outline-offset: 2px;
+  }
+}
+
+// Lists
+// ===================================
+
+ul,
+ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-lg;
+  
+  li {
+    margin-bottom: $spacing-sm;
+    color: $gray-medium;
+    
+    &::marker {
+      color: $primary-cyan;
+    }
+  }
+}
+
+// Custom list styles
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-inline {
+  @extend .list-unstyled;
+  
+  li {
+    display: inline-block;
+    margin-right: $spacing-md;
+    margin-bottom: 0;
+  }
+}
+
+// Text utilities
+// ===================================
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// Font weights
+.font-light {
+  font-weight: $font-weight-light;
+}
+
+.font-normal {
+  font-weight: $font-weight-normal;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.font-black {
+  font-weight: $font-weight-black;
+}
+
+// Font families
+.font-primary {
+  font-family: $font-primary;
+}
+
+.font-heading {
+  font-family: $font-heading;
+}
+
+// Text colors
+.text-primary {
+  color: $primary-cyan;
+}
+
+.text-secondary {
+  color: $primary-magenta;
+}
+
+.text-muted {
+  color: $gray-medium;
+}
+
+.text-light {
+  color: $gray-light;
+}
+
+.text-white {
+  color: $white;
+}
+
+// Text effects
+.text-glow {
+  @include text-glow;
+}
+
+.text-gradient {
+  @include text-gradient;
+}
+
+// Font sizes
+.text-xs {
+  font-size: $font-size-xs;
+}
+
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-base {
+  font-size: $font-size-base;
+}
+
+.text-lg {
+  font-size: $font-size-lg;
+}
+
+.text-xl {
+  font-size: $font-size-xl;
+}
+
+// Line heights
+.leading-tight {
+  line-height: 1.2;
+}
+
+.leading-normal {
+  line-height: 1.6;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+// Letter spacing
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}

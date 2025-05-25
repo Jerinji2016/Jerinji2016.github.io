@@ -1,0 +1,306 @@
+// ===================================
+// PROJECTS PAGE STYLES
+// ===================================
+
+.projects-grid {
+  @include grid-auto-fit(400px, $spacing-xl);
+  
+  @include mobile {
+    @include grid-auto-fit(300px, $spacing-lg);
+  }
+}
+
+.project-card {
+  @include card-style;
+  @include hover-lift;
+  cursor: none;
+  
+  &:hover {
+    border-color: $primary-cyan;
+  }
+}
+
+.project-header {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+}
+
+.project-icon {
+  font-size: 2rem;
+  color: $primary-cyan;
+  
+  &.mobile {
+    color: #f093fb;
+  }
+  
+  &.web {
+    color: #61dafb;
+  }
+  
+  &.desktop {
+    color: #68d391;
+  }
+  
+  &.api {
+    color: #ffd93d;
+  }
+}
+
+.project-status {
+  @include status-badge($status-completed);
+  
+  &.completed {
+    @include status-badge($status-completed);
+  }
+  
+  &.in-development {
+    @include status-badge($status-in-development);
+  }
+  
+  &.deployed {
+    @include status-badge($status-deployed);
+  }
+  
+  &.archived {
+    @include status-badge($gray-medium);
+  }
+}
+
+.project-title {
+  font-size: 1.5rem;
+  margin-bottom: $spacing-md;
+  color: $primary-cyan;
+  font-family: $font-heading;
+  
+  @include mobile {
+    font-size: 1.25rem;
+  }
+}
+
+.project-description {
+  line-height: 1.6;
+  margin-bottom: $spacing-lg;
+  color: $gray-light;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.tech-tag {
+  background: rgba($primary-magenta, 0.2);
+  color: $primary-magenta;
+  padding: 4px 12px;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  // Different colors for different tech types
+  &.frontend {
+    background: rgba(#61dafb, 0.2);
+    color: #61dafb;
+  }
+  
+  &.backend {
+    background: rgba(#68d391, 0.2);
+    color: #68d391;
+  }
+  
+  &.mobile {
+    background: rgba(#f093fb, 0.2);
+    color: #f093fb;
+  }
+  
+  &.database {
+    background: rgba(#ffd93d, 0.2);
+    color: #ffd93d;
+  }
+  
+  &.tool {
+    background: rgba($gray-light, 0.2);
+    color: $gray-light;
+  }
+}
+
+.project-features {
+  h4 {
+    color: $primary-cyan;
+    margin-bottom: $spacing-sm;
+    font-size: 1rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      padding: 5px 0;
+      color: $gray-medium;
+      position: relative;
+      padding-left: $spacing-lg;
+      
+      &::before {
+        content: '▶';
+        color: $primary-cyan;
+        position: absolute;
+        left: 0;
+        font-size: $font-size-xs;
+      }
+    }
+  }
+}
+
+.project-links {
+  @include flex-between;
+  margin-top: $spacing-lg;
+  gap: $spacing-md;
+  
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.project-link {
+  @include flex-center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: transparent;
+  color: $primary-cyan;
+  border: 1px solid $primary-cyan;
+  border-radius: $border-radius-md;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  transition: all $transition-normal;
+  flex: 1;
+  
+  &:hover {
+    background: $primary-cyan;
+    color: $black;
+    transform: translateY(-2px);
+  }
+  
+  i {
+    font-size: 1rem;
+  }
+  
+  &.primary {
+    background: $primary-cyan;
+    color: $black;
+    
+    &:hover {
+      background: lighten($primary-cyan, 10%);
+    }
+  }
+}
+
+// Project modal/overlay (if implemented)
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($black, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: $z-index-loading;
+  @include flex-center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all $transition-normal;
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal-content {
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  @include card-style;
+  margin: $spacing-lg;
+  position: relative;
+  
+  .modal-close {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    background: none;
+    border: none;
+    color: $gray-light;
+    font-size: 1.5rem;
+    cursor: none;
+    
+    &:hover {
+      color: $primary-cyan;
+    }
+  }
+}
+
+// Project filter and search
+.projects-controls {
+  @include flex-between;
+  margin-bottom: $spacing-2xl;
+  gap: $spacing-lg;
+  
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+}
+
+.projects-search {
+  flex: 1;
+  max-width: 300px;
+  
+  input {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    background: rgba($white, 0.05);
+    border: 1px solid $border-primary;
+    border-radius: $border-radius-md;
+    color: $white;
+    font-size: $font-size-sm;
+    
+    &::placeholder {
+      color: $gray-medium;
+    }
+    
+    &:focus {
+      border-color: $primary-cyan;
+      box-shadow: 0 0 0 2px rgba($primary-cyan, 0.2);
+    }
+  }
+}
+
+.projects-filter {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+// Project animations
+.project-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+  
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  // Stagger animation delay
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.1}s;
+    }
+  }
+}
