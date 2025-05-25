@@ -15,95 +15,196 @@ const portfolioData = {
 
     // Skills and Technologies
     skills: [
-        {
-            id: "javascript",
-            name: "JavaScript",
-            category: "Frontend",
-            proficiency: 85,
-            description: "Modern ES6+, React, Node.js",
-            color: "#f7df1e",
-            icon: "fab fa-js-square"
-        },
+        // Frameworks
         {
             id: "flutter",
             name: "Flutter",
-            category: "Mobile",
-            proficiency: 80,
+            category: "Frameworks",
             description: "Cross-platform mobile development",
             color: "#02569b",
             icon: "fas fa-mobile-alt"
         },
         {
+            id: "nextjs",
+            name: "Next.js",
+            category: "Frameworks",
+            description: "React framework for production",
+            color: "#000000",
+            icon: "fab fa-react"
+        },
+        {
+            id: "nestjs",
+            name: "Nest.js",
+            category: "Frameworks",
+            description: "Progressive Node.js framework",
+            color: "#e0234e",
+            icon: "fas fa-server"
+        },
+        {
+            id: "flask",
+            name: "Flask",
+            category: "Frameworks",
+            description: "Lightweight Python web framework",
+            color: "#000000",
+            icon: "fab fa-python"
+        },
+        {
+            id: "hugo",
+            name: "Hugo",
+            category: "Frameworks",
+            description: "Fast static site generator",
+            color: "#ff4088",
+            icon: "fas fa-bolt"
+        },
+
+        // Languages
+        {
+            id: "dart",
+            name: "Dart",
+            category: "Languages",
+            description: "Client-optimized language for apps",
+            color: "#0175c2",
+            icon: "fas fa-code"
+        },
+        {
+            id: "go",
+            name: "Go",
+            category: "Languages",
+            description: "Fast, reliable, and efficient language",
+            color: "#00add8",
+            icon: "fas fa-code"
+        },
+        {
+            id: "android",
+            name: "Native Android",
+            category: "Languages",
+            description: "Native Android development",
+            color: "#3ddc84",
+            icon: "fab fa-android"
+        },
+        {
+            id: "javascript",
+            name: "JavaScript",
+            category: "Languages",
+            description: "Dynamic programming language",
+            color: "#f7df1e",
+            icon: "fab fa-js-square"
+        },
+        {
+            id: "typescript",
+            name: "TypeScript",
+            category: "Languages",
+            description: "Typed superset of JavaScript",
+            color: "#3178c6",
+            icon: "fab fa-js-square"
+        },
+        {
             id: "java",
             name: "Java",
-            category: "Backend",
-            proficiency: 85,
+            category: "Languages",
             description: "Enterprise applications, Android",
             color: "#ed8b00",
             icon: "fab fa-java"
         },
         {
-            id: "html_css",
-            name: "HTML/CSS",
-            category: "Frontend",
-            proficiency: 70,
-            description: "Responsive design, animations",
-            color: "#e34f26",
-            icon: "fab fa-html5"
-        },
-        {
             id: "php",
             name: "PHP",
-            category: "Backend",
-            proficiency: 60,
-            description: "Server-side development",
+            category: "Languages",
+            description: "Server-side scripting language",
             color: "#777bb4",
             icon: "fab fa-php"
         },
         {
-            id: "mysql",
-            name: "MySQL",
-            category: "Database",
-            proficiency: 90,
-            description: "Database design and optimization",
-            color: "#4479a1",
-            icon: "fas fa-database"
-        },
-        {
-            id: "firebase",
-            name: "Firebase",
-            category: "Cloud",
-            proficiency: 65,
-            description: "Real-time databases, authentication",
-            color: "#ffca28",
-            icon: "fas fa-fire"
-        },
-        {
-            id: "git",
-            name: "Git",
-            category: "Tools",
-            proficiency: 60,
-            description: "Version control, collaboration",
-            color: "#f05032",
-            icon: "fab fa-git-alt"
-        },
-        {
             id: "python",
             name: "Python",
-            category: "Backend",
-            proficiency: 30,
-            description: "Data analysis, automation",
+            category: "Languages",
+            description: "Versatile programming language",
             color: "#3776ab",
             icon: "fab fa-python"
         },
         {
+            id: "ruby",
+            name: "Ruby",
+            category: "Languages",
+            description: "Dynamic, object-oriented language",
+            color: "#cc342d",
+            icon: "fas fa-gem"
+        },
+        {
+            id: "bash",
+            name: "Bash Scripts",
+            category: "Languages",
+            description: "Shell scripting and automation",
+            color: "#4eaa25",
+            icon: "fas fa-terminal"
+        },
+        {
             id: "cpp",
             name: "C/C++",
-            category: "Systems",
-            proficiency: 60,
+            category: "Languages",
             description: "System programming, algorithms",
             color: "#00599c",
             icon: "fas fa-code"
+        },
+
+        // Databases
+        {
+            id: "sqlite",
+            name: "SQLite",
+            category: "Databases",
+            description: "Lightweight embedded database",
+            color: "#003b57",
+            icon: "fas fa-database"
+        },
+        {
+            id: "postgresql",
+            name: "PostgreSQL",
+            category: "Databases",
+            description: "Advanced open source database",
+            color: "#336791",
+            icon: "fas fa-database"
+        },
+        {
+            id: "mongodb",
+            name: "MongoDB",
+            category: "Databases",
+            description: "NoSQL document database",
+            color: "#47a248",
+            icon: "fas fa-leaf"
+        },
+        {
+            id: "firebase",
+            name: "Firebase GCP",
+            category: "Databases",
+            description: "Google Cloud Platform services",
+            color: "#ffca28",
+            icon: "fas fa-fire"
+        },
+
+        // Tools
+        {
+            id: "git",
+            name: "Git",
+            category: "Tools",
+            description: "Version control system",
+            color: "#f05032",
+            icon: "fab fa-git-alt"
+        },
+        {
+            id: "fastlane",
+            name: "Fastlane",
+            category: "Tools",
+            description: "Mobile app deployment automation",
+            color: "#00d4aa",
+            icon: "fas fa-rocket"
+        },
+        {
+            id: "figma",
+            name: "Figma",
+            category: "Tools",
+            description: "Collaborative design tool",
+            color: "#f24e1e",
+            icon: "fas fa-pencil-ruler"
         }
     ],
 
@@ -236,19 +337,18 @@ const portfolioUtils = {
     getSkillsByCategory: (category) => {
         return portfolioData.skills.filter(skill => skill.category === category);
     },
-    
+
     getProjectsByStatus: (status) => {
         return portfolioData.projects.filter(project => project.status === status);
     },
-    
-    getSkillProficiencyAverage: () => {
-        const total = portfolioData.skills.reduce((sum, skill) => sum + skill.proficiency, 0);
-        return Math.round(total / portfolioData.skills.length);
+
+    getSkillCount: () => {
+        return portfolioData.skills.length;
     },
-    
+
     getProjectsByTechnology: (tech) => {
-        return portfolioData.projects.filter(project => 
-            project.technologies.some(technology => 
+        return portfolioData.projects.filter(project =>
+            project.technologies.some(technology =>
                 technology.toLowerCase().includes(tech.toLowerCase())
             )
         );

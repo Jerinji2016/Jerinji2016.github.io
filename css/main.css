@@ -1543,13 +1543,12 @@ select,
 .skill-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 0.5rem;
 }
 .skill-header i {
   font-size: 20px;
   margin-right: 0.5rem;
-  color: #00ffff;
 }
 
 .skill-name {
@@ -1558,97 +1557,37 @@ select,
   color: #fff;
 }
 
-.skill-percentage {
-  color: #00ffff;
-  font-weight: 700;
-  font-family: "Orbitron", monospace;
-}
-
-.skill-bar {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-.skill-bar .skill-progress {
-  height: 100%;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #00ffff, #66ffff);
-  transition: width 1s ease-in-out;
-}
-.skill-bar .skill-progress {
-  width: 0%;
-  transition: width 1s ease-in-out;
-}
-.skill-bar .skill-progress[data-level=beginner] {
-  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
-}
-.skill-bar .skill-progress[data-level=intermediate] {
-  background: linear-gradient(90deg, #ffa726, #ffcc02);
-}
-.skill-bar .skill-progress[data-level=advanced] {
-  background: linear-gradient(90deg, #00ffff, #66ffff);
-}
-.skill-bar .skill-progress[data-level=expert] {
-  background: linear-gradient(90deg, #4caf50, #66bb6a);
-}
-
 .skill-description {
   font-size: 14px;
   color: #aaa;
   line-height: 1.4;
 }
 
-.skill-category.frontend {
-  border-color: rgba(97, 218, 251, 0.3);
+.skill-category.frameworks {
+  border-color: rgba(2, 86, 155, 0.3);
 }
-.skill-category.frontend .category-title {
-  color: #61dafb;
+.skill-category.frameworks .category-title {
+  color: #02569b;
 }
-.skill-category.frontend .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #61dafb, rgb(160.2, 232.8, 252.6));
+.skill-category.languages {
+  border-color: rgba(247, 223, 30, 0.3);
 }
-.skill-category.backend {
-  border-color: rgba(104, 211, 145, 0.3);
+.skill-category.languages .category-title {
+  color: #f7df1e;
 }
-.skill-category.backend .category-title {
-  color: #68d391;
+.skill-category.databases {
+  border-color: rgba(51, 103, 145, 0.3);
 }
-.skill-category.backend .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #68d391, rgb(164.4, 228.6, 189));
-}
-.skill-category.mobile {
-  border-color: rgba(240, 147, 251, 0.3);
-}
-.skill-category.mobile .category-title {
-  color: #f093fb;
-}
-.skill-category.mobile .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #f093fb, rgb(246, 190.2, 252.6));
+.skill-category.databases .category-title {
+  color: #336791;
 }
 .skill-category.tools {
-  border-color: rgba(255, 217, 61, 0.3);
+  border-color: rgba(240, 80, 50, 0.3);
 }
 .skill-category.tools .category-title {
-  color: #ffd93d;
-}
-.skill-category.tools .skill-bar .skill-progress {
-  background: linear-gradient(90deg, #ffd93d, rgb(255, 232.2, 138.6));
+  color: #f05032;
 }
 
-.skill-item.animate .skill-bar .skill-progress {
-  animation: skillProgress 1.5s ease-in-out forwards;
-}
-
-@keyframes skillProgress {
-  from {
-    width: 0%;
-  }
-  to {
-    width: var(--skill-width);
-  }
-}
 .skills-filter {
   display: flex;
   align-items: center;

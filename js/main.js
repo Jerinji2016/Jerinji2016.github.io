@@ -12,14 +12,16 @@ class PortfolioApp {
     init() {
         console.log('PortfolioApp initializing...');
 
-        // Hide loading screen first
-        this.hideLoading();
-
-        // Then setup other components
+        // Setup components first
         this.setupCustomCursor();
         this.setupNavigation();
         this.populateContent();
         this.setupScrollEffects();
+
+        // Hide loading screen after content is populated
+        setTimeout(() => {
+            this.hideLoading();
+        }, 500);
 
         console.log('PortfolioApp initialization complete');
     }
@@ -134,8 +136,8 @@ class PortfolioApp {
                             <span class="stat-label">Technologies</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">${portfolioUtils.getSkillProficiencyAverage()}%</span>
-                            <span class="stat-label">Avg. Proficiency</span>
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Categories</span>
                         </div>
                     </div>
                 </div>
@@ -149,24 +151,22 @@ class PortfolioApp {
             console.error('Skills container element not found');
             return;
         }
+
         const skillCategories = [...new Set(portfolioData.skills.map(skill => skill.category))];
         let skillsHTML = '<div class="skills-grid">';
 
         skillCategories.forEach(category => {
-            const categorySkills = portfolioUtils.getSkillsByCategory(category);
+            const categorySkills = portfolioData.skills.filter(skill => skill.category === category);
+            const categoryClass = category.toLowerCase().replace(/\s+/g, '-');
             skillsHTML += `
-                <div class="skill-category">
+                <div class="skill-category ${categoryClass}">
                     <h3 class="category-title">${category}</h3>
                     <div class="skills-list">
                         ${categorySkills.map(skill => `
                             <div class="skill-item" data-skill="${skill.id}">
                                 <div class="skill-header">
-                                    <i class="${skill.icon}"></i>
+                                    <i class="${skill.icon}" style="color: ${skill.color}"></i>
                                     <span class="skill-name">${skill.name}</span>
-                                    <span class="skill-percentage">${skill.proficiency}%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 0%; background-color: ${skill.color}"></div>
                                 </div>
                                 <p class="skill-description">${skill.description}</p>
                             </div>
@@ -178,8 +178,6 @@ class PortfolioApp {
 
         skillsHTML += '</div>';
         skillsContainer.innerHTML = skillsHTML;
-
-        this.animateSkillBars();
     }
 
     populateProjectsSection() {
@@ -277,31 +275,7 @@ class PortfolioApp {
         console.log('Contact section populated successfully');
     }
 
-    animateSkillBars() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillItems = entry.target.querySelectorAll('.skill-item');
-                    skillItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            const progressBar = item.querySelector('.skill-progress');
-                            const skillId = item.dataset.skill;
-                            const skill = portfolioData.skills.find(s => s.id === skillId);
-                            if (skill && progressBar) {
-                                progressBar.style.width = `${skill.proficiency}%`;
-                                progressBar.style.transition = 'width 1s ease-in-out';
-                            }
-                        }, index * 100);
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
 
-        const skillsSection = document.getElementById('skills');
-        if (skillsSection) {
-            observer.observe(skillsSection);
-        }
-    }
 
     setupScrollEffects() {
         // Intersection Observer for section animations

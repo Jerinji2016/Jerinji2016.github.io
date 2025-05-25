@@ -46,13 +46,12 @@
 }
 
 .skill-header {
-  @include flex-between;
+  @include flex-start;
   margin-bottom: $spacing-sm;
 
   i {
     font-size: 20px;
     margin-right: $spacing-sm;
-    color: $primary-cyan;
   }
 }
 
@@ -60,39 +59,6 @@
   flex: 1;
   font-weight: $font-weight-semibold;
   color: $white;
-}
-
-.skill-percentage {
-  color: $primary-cyan;
-  font-weight: $font-weight-bold;
-  font-family: $font-heading;
-}
-
-.skill-bar {
-  @include skill-bar;
-  margin-bottom: $spacing-sm;
-
-  .skill-progress {
-    width: 0%;
-    transition: width 1s ease-in-out;
-
-    // Different colors for different skill levels
-    &[data-level="beginner"] {
-      background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
-    }
-
-    &[data-level="intermediate"] {
-      background: linear-gradient(90deg, #ffa726, #ffcc02);
-    }
-
-    &[data-level="advanced"] {
-      background: linear-gradient(90deg, $primary-cyan, color.scale($primary-cyan, $lightness: 40%));
-    }
-
-    &[data-level="expert"] {
-      background: linear-gradient(90deg, #4caf50, #66bb6a);
-    }
-  }
 }
 
 .skill-description {
@@ -103,72 +69,40 @@
 
 // Skill categories with specific styling
 .skill-category {
-  &.frontend {
-    border-color: rgba(#61dafb, 0.3);
+  &.frameworks {
+    border-color: rgba(#02569b, 0.3);
 
     .category-title {
-      color: #61dafb;
-    }
-
-    .skill-bar .skill-progress {
-      background: linear-gradient(90deg, #61dafb, color.scale(#61dafb, $lightness: 40%));
+      color: #02569b;
     }
   }
 
-  &.backend {
-    border-color: rgba(#68d391, 0.3);
+  &.languages {
+    border-color: rgba(#f7df1e, 0.3);
 
     .category-title {
-      color: #68d391;
-    }
-
-    .skill-bar .skill-progress {
-      background: linear-gradient(90deg, #68d391, color.scale(#68d391, $lightness: 40%));
+      color: #f7df1e;
     }
   }
 
-  &.mobile {
-    border-color: rgba(#f093fb, 0.3);
+  &.databases {
+    border-color: rgba(#336791, 0.3);
 
     .category-title {
-      color: #f093fb;
-    }
-
-    .skill-bar .skill-progress {
-      background: linear-gradient(90deg, #f093fb, color.scale(#f093fb, $lightness: 40%));
+      color: #336791;
     }
   }
 
   &.tools {
-    border-color: rgba(#ffd93d, 0.3);
+    border-color: rgba(#f05032, 0.3);
 
     .category-title {
-      color: #ffd93d;
-    }
-
-    .skill-bar .skill-progress {
-      background: linear-gradient(90deg, #ffd93d, color.scale(#ffd93d, $lightness: 40%));
+      color: #f05032;
     }
   }
 }
 
-// Skills animation on scroll
-.skill-item {
-  &.animate {
-    .skill-bar .skill-progress {
-      animation: skillProgress 1.5s ease-in-out forwards;
-    }
-  }
-}
 
-@keyframes skillProgress {
-  from {
-    width: 0%;
-  }
-  to {
-    width: var(--skill-width);
-  }
-}
 
 // Skills filter (if implemented)
 .skills-filter {
