@@ -708,12 +708,12 @@ ol li::marker {
   flex-wrap: wrap;
 }
 @media (max-width: 768px) {
-  .nav-links {
-    gap: 1.5rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-right: 1rem;
+  .nav-links.desktop-nav {
+    display: none;
   }
+}
+.nav-links.mobile-nav {
+  display: none;
 }
 .nav-links a {
   color: #fff;
@@ -758,6 +758,9 @@ ol li::marker {
   flex-direction: column;
   cursor: pointer;
   padding: 0.5rem;
+  background: none;
+  border: none;
+  z-index: 1001;
 }
 @media (max-width: 768px) {
   .nav-toggle {
@@ -794,11 +797,17 @@ ol li::marker {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 999;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
+}
+@media (min-width: 1200px) {
+  .nav-overlay {
+    display: none;
+  }
 }
 .nav-overlay.active {
   opacity: 1;
@@ -811,10 +820,18 @@ ol li::marker {
   justify-content: center;
   height: 100%;
   gap: 3rem;
+  display: flex;
 }
 .nav-overlay .nav-links a {
   font-size: 18px;
-  padding: 1rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.nav-overlay .nav-links a:hover {
+  background: rgba(0, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .nav.scrolled {
@@ -1255,6 +1272,7 @@ select,
   line-height: 1.8;
   margin-bottom: 3rem;
   color: #ccc;
+  text-align: center;
 }
 @media (max-width: 768px) {
   .about-bio {

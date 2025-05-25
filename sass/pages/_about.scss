@@ -20,6 +20,7 @@
   line-height: 1.8;
   margin-bottom: $spacing-2xl;
   color: $gray-light;
+  text-align: center;
 
   @include mobile {
     font-size: $font-size-base;
