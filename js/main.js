@@ -326,7 +326,10 @@ class PortfolioApp {
             contactHTML += `
                 <a href="${contact.link}" class="contact-method" target="_blank" rel="noopener noreferrer" data-contact="${contact.type}">
                     <div class="contact-icon" data-feather="${contact.featherIcon}" data-ion="${contact.ionIcon}" data-unicode="${contact.unicode}"></div>
-                    <div class="contact-tooltip">${contact.label}: ${contact.value}</div>
+                    <div class="contact-tooltip">
+                        ${contact.label}: ${contact.value}
+                        <div class="tooltip-arrow"></div>
+                    </div>
                 </a>
             `;
         });
