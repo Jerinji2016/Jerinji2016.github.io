@@ -1,116 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerin | Portfolio</title>
+    <title>Jerin P Jimmy | 3D Portfolio</title>
 
-    <script src="scripts/helper.js"></script>
+    <!-- Three.js -->
+    <script src="https://unpkg.com/three@0.146.0/build/three.min.js"></script>
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Feather Icons (Alternative to Font Awesome) -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Backup: Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
-    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/skills.css">
-    <link rel="stylesheet" href="css/project.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="css/nav-bar.css">
-    <script src="scripts/nav-bar.js"></script>
-
-    <script src="scripts/languages.js"></script>
-    <script src="scripts/projects.js"></script>
+    <!-- Compiled Sass CSS -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-    <div class="header-container">
-        <div class="header">
-            <div class="topnav" id="myTopnav">
-                <a href="#home" class="active">
-                    <div class="name">
-                        <img src="icons/account.svg" alt="acc" class="svg-icon"> Jerin
-                    </div>
-                </a>
-                <a href="#lang">Languages</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <a href="javascript:void(0);" class="icon" onclick="navbar()">
-                    <i class="fa fa-bars"></i>
-                </a>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Three.js Canvas -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#home" class="logo">JERIN</a>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-links desktop-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Toggle Button -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="nav-overlay">
+        <ul class="nav-links mobile-nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>JERIN P JIMMY</h1>
+                <p class="subtitle">Full Stack Developer & Creative Technologist</p>
+                <p class="description">
+                    Crafting digital experiences with cutting-edge technology and innovative design.
+                    Specializing in mobile development, web applications, and immersive 3D interfaces.
+                </p>
+                <a href="#projects" class="cta-button">Explore My Work</a>
             </div>
-            <div class="dp-container" data-aos="fade-down">
-                <div class="profile-title">
-                    <div class="image"></div>
-                    <div class="image-name">Jerin P Jimmy</div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="section-content">
+                <h2>About Me</h2>
+                <div id="about-content">
+                    <!-- Content will be populated by JavaScript -->
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills">
+            <div class="section-content">
+                <h2>Skills & Technologies</h2>
+                <div id="skills-container">
+                    <!-- 3D Skills visualization will be added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <div class="section-content">
+                <h2>My Project Journey</h2>
+                <div id="projects-container">
+                    <!-- Categorized project cards will be added here -->
+                    <p style="color: #ccc; text-align: center;">Loading projects...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
+            <div class="section-content">
+                <h2>Let's Connect</h2>
+                <div id="contact-content">
+                    <!-- Contact information will be populated by JavaScript -->
+                    <p style="color: #ccc; text-align: center;">Loading contact information...</p>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <div id="language-container">
-        <div class="sub-container" data-aos="fade-right">
-            <div class="sub-container-heading" id="lang">
-                Languages & Frameworks
-            </div>
-            <div class="language-wrapper" id="language-wrapper"></div>
-        </div>
-    </div>
+    <!-- Scripts -->
+    <script src="js/three-scene.js?v=5"></script>
+    <script src="js/portfolio-data.js?v=5"></script>
+    <script src="js/main.js?v=5"></script>
+    <script>
+        // Initialize the portfolio app
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, initializing app...');
 
-    <div class="sub-container" data-aos="fade-right" id="projects">
-        <div class="sub-container-heading">
-            My Projects
-        </div>
-        <div class="project-wrapper" data-aos="fade-up" id="project-container">
+            // Debug: Check if elements exist
+            console.log('Projects container:', document.getElementById('projects-container'));
+            console.log('Contact content:', document.getElementById('contact-content'));
+            console.log('portfolioData available:', typeof portfolioData !== 'undefined');
 
-        </div>
-    </div>
+            try {
+                const app = new PortfolioApp();
+                // Don't call init() here since constructor already calls it
 
-    <div class="sub-container contact-container" data-aos="fade-up" id="contact">
-        <div class="sub-container-heading">
-            Coffee Together?
-        </div>
-        <div class="contact-wrapper">
-            <div class="sub-contact" data-aos="zoom-out">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <a href="mailto:jerinji2016@gmail.com">jerinji2016@gmail.com</a>
-            </div>
-            <div class="sub-contact" data-aos="zoom-out">
-                <i class="fa fa-mobile" aria-hidden="true"></i>
-                <a href="tel:+917012788627">+91 7012788627</a>
-            </div>
-            <div class="sub-contact" data-aos="zoom-out">
-                <i class="fa fa-github" aria-hidden="true"></i>
-                <a href="https://github.com/Jerinji2016">Jerinji2016</a>
-            </div>
-            <div class="sub-contact" data-aos="zoom-out">
-                <i class="fa fa-telegram" aria-hidden="true"></i>
-                <a href="https://t.me/Jerinji2016">@Jerinji2016</a>
-            </div>
-            <div class="sub-contact" data-aos="zoom-out">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                <a href="https://www.instagram.com/_jerin98_/">@_jerin98_</a>
-            </div>
-        </div>
-    </div>
+                // Debug: Check content after initialization
+                setTimeout(() => {
+                    const projectsContainer = document.getElementById('projects-container');
+                    const contactContent = document.getElementById('contact-content');
+                    console.log('Projects container content after init:', projectsContainer ? projectsContainer.innerHTML.length : 'not found');
+                    console.log('Contact content after init:', contactContent ? contactContent.innerHTML.length : 'not found');
+                }, 1000);
 
-    <div class="footer-container">
-        ❤ Made out of frustration ❤
-    </div>
+            } catch (error) {
+                console.error('Error initializing app:', error);
+                // Fallback: hide loading screen manually
+                setTimeout(() => {
+                    const loading = document.getElementById('loading');
+                    if (loading) {
+                        loading.style.display = 'none';
+                        console.log('Loading screen hidden via fallback');
+                    }
+                }, 1000);
+            }
+        });
+    </script>
 </body>
-
 </html>
-
-<script>
-    AOS.init({
-        duration: 1200,
-    });
-
-    window.onload = function () {
-        skillOnLoad();
-        projectOnLoad();
-    }
-</script>

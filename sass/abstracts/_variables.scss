@@ -1,0 +1,143 @@
+// ===================================
+// SASS VARIABLES
+// ===================================
+
+// Colors
+// ===================================
+
+// Primary Colors
+$primary-cyan: #00ffff;
+$primary-magenta: #ff00ff;
+$primary-yellow: #ffff00;
+
+// Neutral Colors
+$black: #000;
+$white: #fff;
+$gray-light: #ccc;
+$gray-medium: #aaa;
+$gray-dark: #333;
+
+// Background Colors
+$bg-primary: #000;
+$bg-overlay: rgba(0, 0, 0, 0.3);
+$bg-card: rgba(255, 255, 255, 0.05);
+$bg-card-hover: rgba(0, 255, 255, 0.1);
+
+// Border Colors
+$border-primary: rgba(0, 255, 255, 0.2);
+$border-secondary: rgba(0, 255, 255, 0.3);
+
+// Status Colors
+$status-completed: #4CAF50;
+$status-in-development: #FF9800;
+$status-deployed: #2196F3;
+
+// Typography
+// ===================================
+
+// Font Families
+$font-primary: 'Rajdhani', sans-serif;
+$font-heading: 'Orbitron', monospace;
+$font-mono: 'Courier New', monospace;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+
+// Font Sizes
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 24px;
+
+// Responsive Font Sizes
+$font-size-hero: clamp(3rem, 8vw, 6rem);
+$font-size-section: clamp(2.5rem, 5vw, 4rem);
+$font-size-subtitle: clamp(1.2rem, 3vw, 2rem);
+
+// Spacing
+// ===================================
+
+// Base spacing unit
+$spacing-unit: 1rem;
+
+// Spacing scale
+$spacing-xs: $spacing-unit * 0.25; // 4px
+$spacing-sm: $spacing-unit * 0.5;  // 8px
+$spacing-md: $spacing-unit;        // 16px
+$spacing-lg: $spacing-unit * 1.5;  // 24px
+$spacing-xl: $spacing-unit * 2;    // 32px
+$spacing-2xl: $spacing-unit * 3;   // 48px
+$spacing-3xl: $spacing-unit * 4;   // 64px
+
+// Layout spacing
+$section-padding: 100px 50px;
+$section-padding-mobile: 80px 20px;
+$nav-padding: 20px 0px;
+$nav-padding-mobile: 15px 0px;
+
+// Breakpoints
+// ===================================
+
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1200px;
+$breakpoint-large: 1400px;
+
+// Z-index
+// ===================================
+
+$z-index-background: -1;
+$z-index-content: 1;
+$z-index-nav: 1000;
+$z-index-cursor: 9999;
+$z-index-loading: 10000;
+
+// Transitions
+// ===================================
+
+$transition-fast: 0.1s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+$transition-very-slow: 1s ease;
+
+// Border Radius
+// ===================================
+
+$border-radius-sm: 4px;
+$border-radius-md: 10px;
+$border-radius-lg: 15px;
+$border-radius-xl: 20px;
+$border-radius-full: 50px;
+$border-radius-circle: 50%;
+
+// Shadows
+// ===================================
+
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+$shadow-xl: 0 20px 40px rgba(0, 255, 255, 0.2);
+$shadow-glow: 0 0 20px rgba(0, 255, 255, 0.5);
+$shadow-glow-sm: 0 0 10px #00ffff;
+
+// Gradients
+// ===================================
+
+$gradient-primary: linear-gradient(45deg, $primary-cyan, $primary-magenta);
+$gradient-hero: linear-gradient(45deg, $primary-cyan, $primary-magenta, $primary-yellow);
+$gradient-underline: linear-gradient(90deg, $primary-cyan, $primary-magenta);
+$gradient-shimmer: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+
+// Animation Durations
+// ===================================
+
+$animation-fast: 0.3s;
+$animation-normal: 0.5s;
+$animation-slow: 1s;
+$animation-very-slow: 3s;

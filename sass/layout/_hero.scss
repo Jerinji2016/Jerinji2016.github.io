@@ -1,0 +1,142 @@
+// ===================================
+// HERO SECTION LAYOUT
+// ===================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.hero {
+  height: 100vh;
+  @include flex-center;
+  text-align: center;
+  position: relative;
+
+  // Three.js canvas background
+  #three-canvas {
+    @include fixed-full;
+    z-index: $z-index-background;
+  }
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 $spacing-lg;
+  z-index: $z-index-content;
+
+  @include mobile {
+    padding: 0 $spacing-md;
+  }
+}
+
+// Hero typography
+.hero {
+  h1 {
+    font-family: $font-heading;
+    font-size: $font-size-hero;
+    font-weight: $font-weight-black;
+    margin-bottom: $spacing-lg;
+    @include text-gradient($gradient-hero);
+    animation: gradientShift $animation-very-slow ease-in-out infinite;
+  }
+
+  .subtitle {
+    font-size: $font-size-subtitle;
+    margin-bottom: $spacing-xl;
+    color: $gray-light;
+    font-weight: $font-weight-light;
+  }
+
+  .description {
+    font-size: $font-size-lg;
+    line-height: 1.6;
+    margin-bottom: $spacing-2xl;
+    color: $gray-medium;
+  }
+}
+
+// Hero animations
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+// Hero scroll indicator
+.scroll-indicator {
+  position: absolute;
+  bottom: $spacing-xl;
+  left: 50%;
+  transform: translateX(-50%);
+  @include flex-column-center;
+  color: $primary-cyan;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: bounce 2s infinite;
+
+  &::after {
+    content: '';
+    width: 2px;
+    height: 30px;
+    background: $primary-cyan;
+    margin-top: $spacing-sm;
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @include mobile {
+    bottom: $spacing-lg;
+  }
+}
+
+@keyframes scrollLine {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Hero particles effect (if using)
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: $z-index-background + 1;
+}
+
+// Hero overlay for better text readability
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba($black, 0.7) 0%,
+    rgba($black, 0.3) 50%,
+    rgba($black, 0.7) 100%
+  );
+  z-index: $z-index-background + 1;
+}
+
+// Responsive adjustments
+@include mobile {
+  .hero {
+    height: 100vh;
+    padding: $spacing-xl $spacing-md;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+}

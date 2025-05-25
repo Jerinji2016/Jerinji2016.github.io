@@ -1,0 +1,208 @@
+// ===================================
+// SECTION LAYOUTS
+// ===================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Main content container
+.content {
+  position: relative;
+  z-index: $z-index-content;
+  min-height: 100vh;
+}
+
+// Base section styling
+.section {
+  min-height: 100vh;
+  padding: $section-padding;
+  @include flex-center;
+
+  @include mobile {
+    padding: $section-padding-mobile;
+  }
+}
+
+.section-content {
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; // Only hide horizontal overflow
+  overflow-y: visible; // Allow vertical overflow for hover animations
+
+  @include mobile {
+    max-width: 100%;
+  }
+}
+
+// Section headers
+.section {
+  h2 {
+    font-family: $font-heading;
+    font-size: $font-size-section;
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+    color: $primary-cyan;
+    @include text-glow;
+  }
+}
+
+// Section variants
+.section-dark {
+  background: rgba($black, 0.8);
+}
+
+.section-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba($primary-cyan, 0.1) 0%,
+    rgba($primary-magenta, 0.1) 100%
+  );
+}
+
+.section-glass {
+  @include glass-effect(0.1);
+  border-top: 1px solid $border-primary;
+  border-bottom: 1px solid $border-primary;
+}
+
+// Section spacing utilities
+.section-sm {
+  min-height: auto;
+  padding: $spacing-3xl $spacing-2xl;
+
+  @include mobile {
+    padding: $spacing-2xl $spacing-md;
+  }
+}
+
+.section-lg {
+  min-height: 120vh;
+  padding: 120px 50px;
+
+  @include mobile {
+    padding: 100px 20px;
+  }
+}
+
+// Section animations
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.section-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease-out;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Section dividers
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    $primary-cyan 50%,
+    transparent 100%
+  );
+  margin: $spacing-3xl 0;
+
+  &.divider-thick {
+    height: 3px;
+  }
+
+  &.divider-glow {
+    box-shadow: 0 0 10px $primary-cyan;
+  }
+}
+
+// Parallax sections
+.section-parallax {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background-image: url('../assets/parallax-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -1;
+    transform: translateZ(0);
+  }
+}
+
+// Section navigation dots
+.section-nav {
+  position: fixed;
+  right: $spacing-xl;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: $z-index-nav - 1;
+
+  @include mobile {
+    display: none;
+  }
+
+  .nav-dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: $border-radius-circle;
+    background: rgba($white, 0.3);
+    margin: $spacing-md 0;
+    transition: all $transition-normal;
+    cursor: none;
+
+    &:hover,
+    &.active {
+      background: $primary-cyan;
+      transform: scale(1.2);
+      box-shadow: 0 0 10px $primary-cyan;
+    }
+  }
+}
+
+// Responsive section adjustments
+@include mobile {
+  .section {
+    min-height: auto;
+    padding: $spacing-3xl $spacing-md;
+  }
+
+  .section-content {
+    padding: 0;
+  }
+
+  .section h2 {
+    margin-bottom: $spacing-2xl;
+  }
+}

@@ -1,0 +1,266 @@
+// ===================================
+// SKILLS PAGE STYLES
+// ===================================
+
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  padding-top: 10px; // Space for hover animation
+
+  @include mobile {
+    gap: $spacing-xl;
+    padding-top: 8px;
+  }
+}
+
+.skill-category {
+  @include card-style;
+  transition: all $transition-normal;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:hover {
+    @include hover-lift;
+    border-color: $primary-cyan;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @include mobile {
+      gap: $spacing-sm;
+    }
+  }
+}
+
+.category-title {
+  color: $primary-cyan;
+  margin-bottom: $spacing-lg;
+  font-size: 1.5rem;
+  font-family: $font-heading;
+  text-align: center;
+
+  i {
+    margin-right: $spacing-sm;
+    font-size: 1.2em;
+  }
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  background: rgba($white, 0.03);
+  border: 1px solid rgba($white, 0.1);
+  border-radius: $border-radius-lg;
+  transition: all $transition-normal;
+  min-width: 140px;
+  max-width: 140px;
+  min-height: 120px;
+  flex: 0 0 140px;
+  text-align: center;
+
+  @include mobile {
+    min-width: 120px;
+    max-width: 120px;
+    flex: 0 0 120px;
+    min-height: 110px;
+    padding: $spacing-sm;
+  }
+
+  &:hover {
+    background: rgba($primary-cyan, 0.1);
+    border-color: rgba($primary-cyan, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba($primary-cyan, 0.15);
+  }
+}
+
+.skill-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $spacing-sm;
+  width: 100%;
+
+  i {
+    font-size: 2rem;
+    margin-bottom: $spacing-xs;
+
+    @include mobile {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.skill-name {
+  font-weight: $font-weight-semibold;
+  color: $white;
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-xs;
+
+  @include mobile {
+    font-size: $font-size-xs;
+  }
+}
+
+.skill-description {
+  font-size: $font-size-xs;
+  color: $gray-medium;
+  line-height: 1.3;
+  text-align: center;
+
+  @include mobile {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+}
+
+// Skill categories with specific styling
+.skill-category {
+  &.frameworks {
+    border-color: rgba(#02569b, 0.3);
+
+    .category-title {
+      color: #02569b;
+    }
+
+    &:hover {
+      border-color: #02569b;
+      box-shadow: 0 15px 35px rgba(#02569b, 0.2);
+    }
+  }
+
+  &.languages {
+    border-color: rgba(#f7df1e, 0.3);
+
+    .category-title {
+      color: #f7df1e;
+    }
+
+    &:hover {
+      border-color: #f7df1e;
+      box-shadow: 0 15px 35px rgba(#f7df1e, 0.2);
+    }
+  }
+
+  &.databases {
+    border-color: rgba(#336791, 0.3);
+
+    .category-title {
+      color: #336791;
+    }
+
+    &:hover {
+      border-color: #336791;
+      box-shadow: 0 15px 35px rgba(#336791, 0.2);
+    }
+  }
+
+  &.tools {
+    border-color: rgba(#f05032, 0.3);
+
+    .category-title {
+      color: #f05032;
+    }
+
+    &:hover {
+      border-color: #f05032;
+      box-shadow: 0 15px 35px rgba(#f05032, 0.2);
+    }
+  }
+}
+
+
+
+// Skills filter (if implemented)
+.skills-filter {
+  @include flex-center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-2xl;
+
+  @include mobile {
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+}
+
+.filter-btn {
+  padding: $spacing-sm $spacing-lg;
+  background: transparent;
+  color: $gray-light;
+  border: 1px solid $border-primary;
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  transition: all $transition-normal;
+  cursor: none;
+
+  &:hover,
+  &.active {
+    background: $primary-cyan;
+    color: $black;
+    border-color: $primary-cyan;
+  }
+}
+
+// Skills 3D visualization container
+.skills-3d-container {
+  height: 400px;
+  margin: $spacing-2xl 0;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  position: relative;
+
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include mobile {
+    height: 300px;
+    margin: $spacing-xl 0;
+  }
+}
+
+// Skills legend
+.skills-legend {
+  @include flex-center;
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+  flex-wrap: wrap;
+
+  @include mobile {
+    gap: $spacing-md;
+  }
+}
+
+.legend-item {
+  @include flex-center;
+  gap: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $gray-light;
+
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: $border-radius-sm;
+  }
+}

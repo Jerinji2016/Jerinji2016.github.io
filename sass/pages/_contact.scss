@@ -1,0 +1,474 @@
+// ===================================
+// CONTACT PAGE STYLES
+// ===================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Contact section - full viewport height
+.contact-section {
+  height: 100vh;
+  @include flex-center;
+  flex-direction: column;
+  position: relative;
+}
+
+.contact-grid {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-3xl;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-intro {
+  font-size: $font-size-lg;
+  line-height: 1.6;
+  color: $gray-light;
+  max-width: 600px;
+
+  @include mobile {
+    font-size: $font-size-base;
+    padding: 0 $spacing-md;
+  }
+}
+
+// Icon buttons container
+.contact-methods {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-2xl;
+  flex-wrap: wrap;
+
+  @include mobile {
+    gap: $spacing-lg;
+  }
+}
+
+// Individual contact icon buttons
+.contact-method {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba($white, 0.05);
+  border: 2px solid $border-primary;
+  border-radius: $border-radius-circle;
+  color: $white;
+  text-decoration: none;
+  font-size: 2rem;
+  transition: all $transition-normal;
+  cursor: none;
+  overflow: visible;
+
+  &:hover {
+    transform: translateY(-10px) scale(1.1);
+    border-color: $primary-cyan;
+    color: $primary-cyan;
+    box-shadow: 0 20px 40px rgba($primary-cyan, 0.3);
+
+    .contact-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-15px) scale(1);
+      animation: glitch-tooltip 0.4s ease-out;
+
+      // Activate scanline and noise effects during hover
+      &::before {
+        animation: glitch-bg 2s infinite, digital-noise-texture 0.4s ease-out;
+      }
+
+      // Add scanline overlay during glitch
+      &::after {
+        animation: scanline-glitch 1s ease-out;
+      }
+    }
+  }
+
+  // Specific hover colors for different contact types
+  &[data-contact="email"]:hover {
+    border-color: #ea4335;
+    color: #ea4335;
+    box-shadow: 0 20px 40px rgba(#ea4335, 0.3);
+  }
+
+  &[data-contact="linkedin"]:hover {
+    border-color: #0077b5;
+    color: #0077b5;
+    box-shadow: 0 20px 40px rgba(#0077b5, 0.3);
+  }
+
+  &[data-contact="github"]:hover {
+    border-color: #333;
+    color: #333;
+    box-shadow: 0 20px 40px rgba(#333, 0.3);
+  }
+
+  &[data-contact="telegram"]:hover {
+    border-color: #0088cc;
+    color: #0088cc;
+    box-shadow: 0 20px 40px rgba(#0088cc, 0.3);
+  }
+
+
+
+  @include mobile {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+
+    &:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
+  }
+}
+
+// Contact icon styling
+.contact-icon {
+  font-size: inherit;
+  color: inherit;
+  transition: all $transition-normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+
+  // Feather icons styling
+  svg {
+    width: 1em;
+    height: 1em;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  // Ionicons styling
+  ion-icon {
+    font-size: 1em;
+    color: inherit;
+    --ionicon-stroke-width: 32px;
+  }
+
+  // Unicode fallback styling
+  &:not(:has(svg)):not(:has(ion-icon)) {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+    font-size: 0.9em;
+  }
+}
+
+// CSS-only icon fallbacks (if all else fails)
+.contact-method[data-contact="email"] .contact-icon:empty::before {
+  content: "✉";
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.contact-method[data-contact="linkedin"] .contact-icon:empty::before {
+  content: "💼";
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.contact-method[data-contact="github"] .contact-icon:empty::before {
+  content: "🐙";
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.contact-method[data-contact="telegram"] .contact-icon:empty::before {
+  content: "✈";
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+
+
+// Enhanced glitch tooltip with scanline effects
+.contact-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-15px) scale(0.8);
+  background: rgba($black, 0.95);
+  border: 1px solid $primary-cyan;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm $spacing-md;
+  color: $primary-cyan;
+  font-size: $font-size-sm;
+  font-family: $font-heading;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all $transition-normal;
+  z-index: 10;
+  pointer-events: none;
+  margin-bottom: $spacing-sm;
+  overflow: hidden; // Important for scanline effect
+
+  // Enhanced glitch effect background with noise texture
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      // Digital noise pattern
+      radial-gradient(circle at 20% 80%, rgba($primary-cyan, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba($primary-magenta, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%),
+      // Original gradient
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba($primary-cyan, 0.1) 25%,
+        transparent 50%,
+        rgba($primary-magenta, 0.1) 75%,
+        transparent 100%
+      );
+    background-size:
+      10px 10px,
+      15px 15px,
+      8px 8px,
+      100% 100%;
+    border-radius: inherit;
+    opacity: 0;
+    animation: glitch-bg 2s infinite;
+    z-index: 1;
+  }
+
+  // Scanline overlay effect
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($primary-cyan, 0.8) 20%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba($primary-cyan, 0.8) 80%,
+      transparent 100%
+    );
+    box-shadow:
+      0 0 4px rgba($primary-cyan, 0.6),
+      0 0 8px rgba($primary-cyan, 0.4),
+      0 0 12px rgba($primary-cyan, 0.2);
+    opacity: 0;
+    z-index: 3;
+    animation: scanline-glitch 0.4s ease-out;
+  }
+
+  // Tooltip arrow (now using a separate element approach)
+  .tooltip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: $primary-cyan;
+    z-index: 2;
+  }
+
+  @include mobile {
+    font-size: $font-size-xs;
+    padding: $spacing-xs $spacing-sm;
+    transform: translateX(-50%) translateY(-10px) scale(0.8);
+    margin-bottom: $spacing-xs;
+  }
+}
+
+// Contact form (if implemented)
+.contact-form {
+  max-width: 500px;
+  margin: $spacing-3xl auto 0;
+
+  @include mobile {
+    margin-top: $spacing-2xl;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  text-align: left;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    color: $primary-cyan;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-sm;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: $spacing-md;
+    background: rgba($white, 0.05);
+    border: 1px solid $border-primary;
+    border-radius: $border-radius-md;
+    color: $white;
+    font-size: $font-size-base;
+    transition: all $transition-normal;
+
+    &::placeholder {
+      color: $gray-medium;
+    }
+
+    &:focus {
+      border-color: $primary-cyan;
+      box-shadow: 0 0 0 2px rgba($primary-cyan, 0.2);
+      background: rgba($white, 0.08);
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+}
+
+.form-submit {
+  width: 100%;
+  @include button-style;
+  margin-top: $spacing-lg;
+}
+
+// Social links
+.social-links {
+  @include flex-center;
+  gap: $spacing-lg;
+  margin-top: $spacing-2xl;
+
+  @include mobile {
+    gap: $spacing-md;
+    margin-top: $spacing-xl;
+  }
+}
+
+.social-link {
+  @include flex-center;
+  width: 50px;
+  height: 50px;
+  background: rgba($white, 0.05);
+  border: 1px solid $border-primary;
+  border-radius: $border-radius-circle;
+  color: $white;
+  text-decoration: none;
+  font-size: 1.25rem;
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $primary-cyan;
+    color: $primary-cyan;
+    box-shadow: 0 10px 20px rgba($primary-cyan, 0.2);
+  }
+
+  &.github:hover {
+    border-color: #333;
+    color: #333;
+    background: $white;
+  }
+
+  &.linkedin:hover {
+    border-color: #0077b5;
+    color: #0077b5;
+    background: $white;
+  }
+
+  &.twitter:hover {
+    border-color: #1da1f2;
+    color: #1da1f2;
+    background: $white;
+  }
+
+  &.email:hover {
+    border-color: #ea4335;
+    color: #ea4335;
+    background: $white;
+  }
+
+  @include mobile {
+    width: 45px;
+    height: 45px;
+    font-size: 1.125rem;
+  }
+}
+
+// Contact animations
+.contact-method {
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+  transition: all 0.8s ease-out;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  // Stagger animation delay for icon buttons
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.15}s;
+    }
+  }
+}
+
+// Contact availability status (optional)
+.availability-status {
+  @include flex-center;
+  gap: $spacing-sm;
+  margin-top: $spacing-xl;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($status-completed, 0.1);
+  border: 1px solid rgba($status-completed, 0.3);
+  border-radius: $border-radius-lg;
+  color: $status-completed;
+  font-size: $font-size-sm;
+  font-family: $font-heading;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: $status-completed;
+    border-radius: $border-radius-circle;
+    animation: pulse 2s infinite;
+  }
+
+  &.busy {
+    background: rgba($status-in-development, 0.1);
+    border-color: rgba($status-in-development, 0.3);
+    color: $status-in-development;
+
+    &::before {
+      background: $status-in-development;
+    }
+  }
+
+  &.unavailable {
+    background: rgba(#f44336, 0.1);
+    border-color: rgba(#f44336, 0.3);
+    color: #f44336;
+
+    &::before {
+      background: #f44336;
+    }
+  }
+
+  @include mobile {
+    margin-top: $spacing-lg;
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-xs;
+  }
+}

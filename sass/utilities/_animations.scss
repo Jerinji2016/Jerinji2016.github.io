@@ -1,0 +1,750 @@
+// ===================================
+// ANIMATIONS & KEYFRAMES
+// ===================================
+
+@use '../abstracts/variables' as *;
+
+// Fade animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Slide animations
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Scale animations
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+// Rotation animations
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+// Bounce animations
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    transform: scale3d(.97, .97, .97);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+// Pulse animations
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba($primary-cyan, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($primary-cyan, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($primary-cyan, 0);
+  }
+}
+
+// Shake animations
+@keyframes shake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+// Flip animations
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+
+// Gradient animations
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Typing animation
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: $primary-cyan;
+  }
+}
+
+// Float animation
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Glow animation
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px $primary-cyan, 0 0 20px $primary-cyan, 0 0 30px $primary-cyan;
+  }
+  to {
+    text-shadow: 0 0 20px $primary-cyan, 0 0 30px $primary-cyan, 0 0 40px $primary-cyan;
+  }
+}
+
+// Enhanced glitch effect animations for contact tooltips with scanlines and noise
+@keyframes glitch-tooltip {
+  0% {
+    transform: translateX(-50%) translateY(-15px) scale(1);
+    filter: hue-rotate(0deg) contrast(1) brightness(1);
+    text-shadow: 0 0 0 transparent;
+  }
+  5% {
+    transform: translateX(-50%) translateY(-15px) scale(1) skew(2deg);
+    filter: hue-rotate(90deg) contrast(1.2) brightness(1.1);
+    text-shadow: 2px 0 0 rgba(255, 0, 0, 0.8), -2px 0 0 rgba(0, 255, 255, 0.8);
+  }
+  10% {
+    transform: translateX(-50%) translateY(-15px) scale(1.02) skew(-1deg);
+    filter: hue-rotate(180deg) contrast(1.5) brightness(0.9);
+    text-shadow: -1px 0 0 rgba(255, 0, 0, 0.6), 1px 0 0 rgba(0, 255, 255, 0.6);
+  }
+  15% {
+    transform: translateX(-50%) translateY(-15px) scale(0.98) skew(1.5deg);
+    filter: hue-rotate(270deg) contrast(1.3) brightness(1.2);
+    text-shadow: 3px 0 0 rgba(255, 0, 255, 0.7), -3px 0 0 rgba(0, 255, 0, 0.7);
+  }
+  20% {
+    transform: translateX(-50%) translateY(-15px) scale(1.01) skew(-0.5deg);
+    filter: hue-rotate(360deg) contrast(1.1) brightness(0.8);
+    text-shadow: 1px 0 0 rgba(255, 255, 0, 0.9), -1px 0 0 rgba(255, 0, 255, 0.9);
+  }
+  25% {
+    transform: translateX(-50%) translateY(-15px) scale(0.99) skew(0.8deg);
+    filter: hue-rotate(45deg) contrast(1.4) brightness(1.1);
+    text-shadow: -2px 0 0 rgba(0, 255, 255, 0.8), 2px 0 0 rgba(255, 0, 0, 0.8);
+  }
+  30% {
+    transform: translateX(-50%) translateY(-15px) scale(1.03) skew(-1.2deg);
+    filter: hue-rotate(135deg) contrast(1.2) brightness(0.9);
+    text-shadow: 0 0 0 transparent;
+  }
+  35% {
+    transform: translateX(-50%) translateY(-15px) scale(0.97) skew(0.3deg);
+    filter: hue-rotate(225deg) contrast(1.6) brightness(1.3);
+    text-shadow: 4px 0 0 rgba(255, 0, 0, 0.5), -4px 0 0 rgba(0, 255, 255, 0.5);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-15px) scale(1) skew(-0.8deg);
+    filter: hue-rotate(315deg) contrast(1.1) brightness(0.7);
+    text-shadow: 1px 0 0 rgba(255, 255, 0, 0.6), -1px 0 0 rgba(255, 0, 255, 0.6);
+  }
+  45% {
+    transform: translateX(-50%) translateY(-15px) scale(1.02) skew(1.1deg);
+    filter: hue-rotate(90deg) contrast(1.3) brightness(1.2);
+    text-shadow: -3px 0 0 rgba(0, 255, 0, 0.7), 3px 0 0 rgba(255, 0, 255, 0.7);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-15px) scale(0.98) skew(-0.2deg);
+    filter: hue-rotate(180deg) contrast(1.5) brightness(0.8);
+    text-shadow: 2px 0 0 rgba(255, 0, 0, 0.9), -2px 0 0 rgba(0, 255, 255, 0.9);
+  }
+  55% {
+    transform: translateX(-50%) translateY(-15px) scale(1.01) skew(0.6deg);
+    filter: hue-rotate(270deg) contrast(1.2) brightness(1.1);
+    text-shadow: 0 0 0 transparent;
+  }
+  60% {
+    transform: translateX(-50%) translateY(-15px) scale(0.99) skew(-1deg);
+    filter: hue-rotate(0deg) contrast(1.4) brightness(0.9);
+    text-shadow: 1px 0 0 rgba(255, 255, 0, 0.8), -1px 0 0 rgba(255, 0, 255, 0.8);
+  }
+  65% {
+    transform: translateX(-50%) translateY(-15px) scale(1.02) skew(0.4deg);
+    filter: hue-rotate(45deg) contrast(1.1) brightness(1.3);
+    text-shadow: -2px 0 0 rgba(0, 255, 255, 0.6), 2px 0 0 rgba(255, 0, 0, 0.6);
+  }
+  70% {
+    transform: translateX(-50%) translateY(-15px) scale(0.98) skew(-0.7deg);
+    filter: hue-rotate(135deg) contrast(1.3) brightness(0.8);
+    text-shadow: 3px 0 0 rgba(255, 0, 255, 0.7), -3px 0 0 rgba(0, 255, 0, 0.7);
+  }
+  75% {
+    transform: translateX(-50%) translateY(-15px) scale(1) skew(0.9deg);
+    filter: hue-rotate(225deg) contrast(1.2) brightness(1.1);
+    text-shadow: 0 0 0 transparent;
+  }
+  80% {
+    transform: translateX(-50%) translateY(-15px) scale(1.01) skew(-0.3deg);
+    filter: hue-rotate(315deg) contrast(1.1) brightness(0.9);
+    text-shadow: 1px 0 0 rgba(255, 0, 0, 0.5), -1px 0 0 rgba(0, 255, 255, 0.5);
+  }
+  85% {
+    transform: translateX(-50%) translateY(-15px) scale(0.99) skew(0.5deg);
+    filter: hue-rotate(90deg) contrast(1.4) brightness(1.2);
+    text-shadow: -1px 0 0 rgba(255, 255, 0, 0.6), 1px 0 0 rgba(255, 0, 255, 0.6);
+  }
+  90% {
+    transform: translateX(-50%) translateY(-15px) scale(1) skew(-0.1deg);
+    filter: hue-rotate(180deg) contrast(1.2) brightness(1);
+    text-shadow: 0 0 0 transparent;
+  }
+  95% {
+    transform: translateX(-50%) translateY(-15px) scale(1) skew(0.2deg);
+    filter: hue-rotate(45deg) contrast(1.1) brightness(1.1);
+    text-shadow: 0.5px 0 0 rgba(255, 0, 0, 0.3), -0.5px 0 0 rgba(0, 255, 255, 0.3);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-15px) scale(1);
+    filter: hue-rotate(0deg) contrast(1) brightness(1);
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes glitch-bg {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  10% {
+    opacity: 0.1;
+    transform: translateX(-2px);
+  }
+  20% {
+    opacity: 0.2;
+    transform: translateX(2px);
+  }
+  30% {
+    opacity: 0.1;
+    transform: translateX(-1px);
+  }
+  40% {
+    opacity: 0.3;
+    transform: translateX(1px);
+  }
+  50% {
+    opacity: 0.1;
+    transform: translateX(0);
+  }
+  60% {
+    opacity: 0.2;
+    transform: translateX(-1px);
+  }
+  70% {
+    opacity: 0.1;
+    transform: translateX(1px);
+  }
+  80% {
+    opacity: 0.2;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 0.1;
+    transform: translateX(-0.5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+// Scanline effect for tooltip glitch
+@keyframes scanline-glitch {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    transform: translateY(-80%);
+    opacity: 0.8;
+  }
+  10% {
+    transform: translateY(-60%);
+    opacity: 1;
+  }
+  15% {
+    transform: translateY(-40%);
+    opacity: 0.9;
+  }
+  20% {
+    transform: translateY(-20%);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(0%);
+    opacity: 0.8;
+  }
+  30% {
+    transform: translateY(20%);
+    opacity: 1;
+  }
+  35% {
+    transform: translateY(40%);
+    opacity: 0.9;
+  }
+  40% {
+    transform: translateY(60%);
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(80%);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(100%);
+    opacity: 0.6;
+  }
+  55% {
+    transform: translateY(120%);
+    opacity: 0.4;
+  }
+  60% {
+    transform: translateY(140%);
+    opacity: 0.2;
+  }
+  65% {
+    transform: translateY(160%);
+    opacity: 0.1;
+  }
+  70% {
+    transform: translateY(180%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+}
+
+// Digital noise texture effect
+@keyframes digital-noise-texture {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0;
+  }
+  5% {
+    background-position: 10% 5%;
+    opacity: 0.1;
+  }
+  10% {
+    background-position: 20% 10%;
+    opacity: 0.2;
+  }
+  15% {
+    background-position: 30% 15%;
+    opacity: 0.15;
+  }
+  20% {
+    background-position: 40% 20%;
+    opacity: 0.25;
+  }
+  25% {
+    background-position: 50% 25%;
+    opacity: 0.2;
+  }
+  30% {
+    background-position: 60% 30%;
+    opacity: 0.3;
+  }
+  35% {
+    background-position: 70% 35%;
+    opacity: 0.25;
+  }
+  40% {
+    background-position: 80% 40%;
+    opacity: 0.35;
+  }
+  45% {
+    background-position: 90% 45%;
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.4;
+  }
+  55% {
+    background-position: 90% 55%;
+    opacity: 0.35;
+  }
+  60% {
+    background-position: 80% 60%;
+    opacity: 0.3;
+  }
+  65% {
+    background-position: 70% 65%;
+    opacity: 0.25;
+  }
+  70% {
+    background-position: 60% 70%;
+    opacity: 0.2;
+  }
+  75% {
+    background-position: 50% 75%;
+    opacity: 0.15;
+  }
+  80% {
+    background-position: 40% 80%;
+    opacity: 0.1;
+  }
+  85% {
+    background-position: 30% 85%;
+    opacity: 0.05;
+  }
+  90% {
+    background-position: 20% 90%;
+    opacity: 0.02;
+  }
+  95% {
+    background-position: 10% 95%;
+    opacity: 0.01;
+  }
+  100% {
+    background-position: 0% 100%;
+    opacity: 0;
+  }
+}
+
+// Digital noise effect for contact buttons
+@keyframes digital-noise {
+  0% {
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 255, 255, 0.1),
+      0 0 20px rgba(0, 255, 255, 0.2);
+  }
+  25% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 0, 255, 0.1),
+      0 0 25px rgba(255, 0, 255, 0.3);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 0, 0.1),
+      0 0 30px rgba(255, 255, 0, 0.2);
+  }
+  75% {
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 255, 255, 0.1),
+      0 0 25px rgba(0, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 255, 255, 0.1),
+      0 0 20px rgba(0, 255, 255, 0.2);
+  }
+}
+
+// Animation utility classes
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.8s ease-in-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-spin {
+  animation: rotate 1s linear infinite;
+}
+
+.animate-glitch-tooltip {
+  animation: glitch-tooltip 0.4s ease-out;
+}
+
+.animate-digital-noise {
+  animation: digital-noise 3s ease-in-out infinite;
+}
+
+// Animation delays
+@for $i from 1 through 10 {
+  .animate-delay-#{$i} {
+    animation-delay: #{$i * 0.1}s;
+  }
+}

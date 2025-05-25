@@ -1,0 +1,246 @@
+// ===================================
+// MAIN SASS FILE
+// Portfolio 3D Website
+// ===================================
+
+// Abstracts - Variables, mixins, functions
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+
+// Base - Reset, typography, base styles
+@use 'base/reset';
+@use 'base/typography';
+
+// Layout - Grid, header, footer, navigation
+@use 'layout/hero';
+@use 'layout/sections';
+
+// Components - Buttons, cards, modals, etc.
+@use 'components/navigation';
+@use 'components/cursor';
+@use 'components/loading';
+@use 'components/buttons';
+
+// Pages - Page-specific styles
+@use 'pages/about';
+@use 'pages/skills';
+@use 'pages/projects';
+@use 'pages/contact';
+
+// Utilities - Animations, helpers, utilities
+@use 'utilities/animations';
+
+// ===================================
+// THREE.JS CANVAS STYLES
+// ===================================
+
+#three-canvas {
+  @include fixed-full;
+  z-index: $z-index-background;
+}
+
+// ===================================
+// MAIN CONTENT CONTAINER
+// ===================================
+
+.content {
+  position: relative;
+  z-index: $z-index-content;
+  min-height: 100vh;
+}
+
+// ===================================
+// UTILITY CLASSES
+// ===================================
+
+// Spacing utilities
+.m-0 { margin: 0; }
+.mt-1 { margin-top: $spacing-xs; }
+.mt-2 { margin-top: $spacing-sm; }
+.mt-3 { margin-top: $spacing-md; }
+.mt-4 { margin-top: $spacing-lg; }
+.mt-5 { margin-top: $spacing-xl; }
+.mt-6 { margin-top: $spacing-2xl; }
+
+.mb-1 { margin-bottom: $spacing-xs; }
+.mb-2 { margin-bottom: $spacing-sm; }
+.mb-3 { margin-bottom: $spacing-md; }
+.mb-4 { margin-bottom: $spacing-lg; }
+.mb-5 { margin-bottom: $spacing-xl; }
+.mb-6 { margin-bottom: $spacing-2xl; }
+
+.p-0 { padding: 0; }
+.pt-1 { padding-top: $spacing-xs; }
+.pt-2 { padding-top: $spacing-sm; }
+.pt-3 { padding-top: $spacing-md; }
+.pt-4 { padding-top: $spacing-lg; }
+.pt-5 { padding-top: $spacing-xl; }
+.pt-6 { padding-top: $spacing-2xl; }
+
+.pb-1 { padding-bottom: $spacing-xs; }
+.pb-2 { padding-bottom: $spacing-sm; }
+.pb-3 { padding-bottom: $spacing-md; }
+.pb-4 { padding-bottom: $spacing-lg; }
+.pb-5 { padding-bottom: $spacing-xl; }
+.pb-6 { padding-bottom: $spacing-2xl; }
+
+// Display utilities
+.d-none { display: none; }
+.d-block { display: block; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+// Flex utilities
+.flex-center { @include flex-center; }
+.flex-between { @include flex-between; }
+.flex-column { @include flex-column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+.align-start { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-end { align-items: flex-end; }
+.align-stretch { align-items: stretch; }
+
+// Position utilities
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+.position-sticky { position: sticky; }
+
+// Overflow utilities
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-scroll { overflow: scroll; }
+
+// Width utilities
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.w-fit { width: fit-content; }
+
+// Height utilities
+.h-full { height: 100%; }
+.h-screen { height: 100vh; }
+.h-auto { height: auto; }
+
+// Border radius utilities
+.rounded-none { border-radius: 0; }
+.rounded-sm { border-radius: $border-radius-sm; }
+.rounded { border-radius: $border-radius-md; }
+.rounded-lg { border-radius: $border-radius-lg; }
+.rounded-xl { border-radius: $border-radius-xl; }
+.rounded-full { border-radius: $border-radius-full; }
+
+// Shadow utilities
+.shadow-none { box-shadow: none; }
+.shadow-sm { box-shadow: $shadow-sm; }
+.shadow { box-shadow: $shadow-md; }
+.shadow-lg { box-shadow: $shadow-lg; }
+.shadow-xl { box-shadow: $shadow-xl; }
+
+// Opacity utilities
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: 0.25; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+// Visibility utilities
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
+
+// Cursor utilities
+.cursor-pointer { cursor: pointer; }
+.cursor-none { cursor: none; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+// Z-index utilities
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+// ===================================
+// RESPONSIVE UTILITIES
+// ===================================
+
+@include mobile {
+  .mobile\:d-none { display: none; }
+  .mobile\:d-block { display: block; }
+  .mobile\:d-flex { display: flex; }
+
+  .mobile\:text-center { text-align: center; }
+  .mobile\:text-left { text-align: left; }
+
+  .mobile\:flex-column { flex-direction: column; }
+  .mobile\:flex-row { flex-direction: row; }
+}
+
+// ===================================
+// ACCESSIBILITY
+// ===================================
+
+// Focus styles
+*:focus {
+  outline: 2px solid $primary-cyan;
+  outline-offset: 2px;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .hero h1 {
+    background: $white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section h2 {
+    color: $white;
+    text-shadow: none;
+  }
+}
+
+// ===================================
+// PRINT STYLES
+// ===================================
+
+@media print {
+  .nav,
+  .cursor,
+  .loading,
+  #three-canvas {
+    display: none !important;
+  }
+
+  body {
+    background: $white !important;
+    color: $black !important;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    padding: $spacing-lg !important;
+  }
+}
