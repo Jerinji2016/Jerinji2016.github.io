@@ -307,73 +307,221 @@ class PortfolioApp {
             });
         }, 200);
 
+        // Add click handlers for project cards
+        this.setupProjectCardHandlers();
+
+        // Initialize icons with fallback
+        this.initializeProjectIcons();
+
         console.log('Projects section populated successfully');
     }
 
     renderProjectCards(projects, categoryType) {
         return projects.map(project => {
-            const linksHTML = this.generateProjectLinks(project);
-            const cryReasonHTML = categoryType === 'cry' && project.whyItMadeMeCry ?
-                `<div class="cry-reason">
-                    <div class="cry-label">Why it made me cry:</div>
-                    <div class="cry-text">${project.whyItMadeMeCry}</div>
-                </div>` : '';
+            const headerLinksHTML = this.generateHeaderLinks(project);
+
+            // Truncate description to one line (approximately 100 characters)
+            const shortDescription = project.description.length > 100
+                ? project.description.substring(0, 100) + '...'
+                : project.description;
 
             return `
-                <div class="project-card" data-project="${project.id}">
+                <div class="project-card" data-project="${project.id}" data-category="${categoryType}">
                     <div class="project-header">
                         <div class="project-icon" style="color: ${project.color}">
                             <i class="${project.icon}"></i>
                         </div>
-                        <div class="project-status ${project.status.toLowerCase().replace(' ', '-')}">${project.status}</div>
+                        <div class="project-header-actions">
+                            ${headerLinksHTML}
+                            <div class="project-status ${project.status.toLowerCase().replace(' ', '-')}">${project.status}</div>
+                        </div>
                     </div>
                     <h3 class="project-title">${project.title}</h3>
-                    <p class="project-description">${project.description}</p>
+                    <p class="project-description">${shortDescription}</p>
                     <div class="project-tech">
                         ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                     </div>
-                    <div class="project-features">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                    </div>
-                    ${project.techStack ? `
-                        <div class="tech-stack-info">
-                            <div class="tech-stack-label">Tech Stack Breakdown:</div>
-                            <div class="tech-stack-text">${project.techStack}</div>
-                        </div>
-                    ` : ''}
-                    ${cryReasonHTML}
-                    ${linksHTML}
                 </div>
             `;
         }).join('');
     }
 
-    generateProjectLinks(project) {
-        let linksHTML = '<div class="project-links">';
-
-        if (project.liveDemo) {
-            linksHTML += `
-                <a href="${project.liveDemo}" class="project-link live-demo" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-external-link-alt"></i>
-                    Live Demo
-                </a>
-            `;
-        }
+    generateHeaderLinks(project) {
+        let linksHTML = '';
 
         if (project.github) {
             linksHTML += `
-                <a href="${project.github}" class="project-link github-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                    GitHub
+                <a href="${project.github}" class="header-link github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                    <i class="fa-brands fa-github" data-fallback="🐙"></i>
                 </a>
             `;
         }
 
-        linksHTML += '</div>';
+        if (project.liveDemo) {
+            linksHTML += `
+                <a href="${project.liveDemo}" class="header-link live-demo" target="_blank" rel="noopener noreferrer" title="Live Demo">
+                    <i class="fa-solid fa-arrow-up-right-from-square" data-fallback="🔗"></i>
+                </a>
+            `;
+        }
+
         return linksHTML;
+    }
+
+    setupProjectCardHandlers() {
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't open panel if clicking on header links
+                if (e.target.closest('.header-link')) {
+                    return;
+                }
+
+                const projectId = card.getAttribute('data-project');
+                const categoryType = card.getAttribute('data-category');
+                this.openProjectDetailPanel(projectId, categoryType);
+            });
+        });
+    }
+
+    openProjectDetailPanel(projectId, categoryType) {
+        const project = this.getProjectById(projectId, categoryType);
+        if (!project) return;
+
+        // Create detail panel if it doesn't exist
+        let detailPanel = document.getElementById('project-detail-panel');
+        if (!detailPanel) {
+            detailPanel = document.createElement('div');
+            detailPanel.id = 'project-detail-panel';
+            detailPanel.className = 'project-detail-panel';
+            document.body.appendChild(detailPanel);
+        }
+
+        // Generate panel content
+        const cryReasonHTML = categoryType === 'cry' && project.whyItMadeMeCry ?
+            `<div class="detail-cry-reason">
+                <h4>Why it made me cry:</h4>
+                <p>${project.whyItMadeMeCry}</p>
+            </div>` : '';
+
+        detailPanel.innerHTML = `
+            <div class="detail-panel-content">
+                <div class="detail-header">
+                    <div class="detail-icon" style="color: ${project.color}">
+                        <i class="${project.icon}"></i>
+                    </div>
+                    <h2 class="detail-title">${project.title}</h2>
+                    <button class="detail-close" aria-label="Close detail panel">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div class="detail-body">
+                    <div class="detail-description">
+                        <h3>About this project</h3>
+                        <p>${project.description}</p>
+                    </div>
+
+                    <div class="detail-features">
+                        <h3>Key Features</h3>
+                        <ul>
+                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="detail-tech">
+                        <h3>Technologies Used</h3>
+                        <div class="detail-tech-tags">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    ${cryReasonHTML}
+
+                    <div class="detail-links">
+                        ${project.github ? `<a href="${project.github}" class="detail-link github" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View on GitHub</a>` : ''}
+                        ${project.liveDemo ? `<a href="${project.liveDemo}" class="detail-link live-demo" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Show panel with animation
+        setTimeout(() => {
+            detailPanel.classList.add('active');
+        }, 10);
+
+        // Add close handler
+        const closeBtn = detailPanel.querySelector('.detail-close');
+        closeBtn.addEventListener('click', () => this.closeProjectDetailPanel());
+
+        // Close on backdrop click
+        detailPanel.addEventListener('click', (e) => {
+            if (e.target === detailPanel) {
+                this.closeProjectDetailPanel();
+            }
+        });
+
+        // Close on escape key
+        const escapeHandler = (e) => {
+            if (e.key === 'Escape') {
+                this.closeProjectDetailPanel();
+                document.removeEventListener('keydown', escapeHandler);
+            }
+        };
+        document.addEventListener('keydown', escapeHandler);
+    }
+
+    closeProjectDetailPanel() {
+        const detailPanel = document.getElementById('project-detail-panel');
+        if (detailPanel) {
+            detailPanel.classList.remove('active');
+            setTimeout(() => {
+                detailPanel.remove();
+            }, 300);
+        }
+    }
+
+    getProjectById(projectId, categoryType) {
+        const projects = categoryType === 'fun'
+            ? portfolioData.projects.funProjects
+            : portfolioData.projects.projectsThatMadeMeCry;
+
+        return projects.find(project => project.id === projectId);
+    }
+
+    initializeProjectIcons() {
+        // Check if Font Awesome icons are loading properly, if not use fallbacks
+        setTimeout(() => {
+            const projectIcons = document.querySelectorAll('.header-link i[data-fallback]');
+            console.log('Found project icons:', projectIcons.length);
+
+            projectIcons.forEach((icon, index) => {
+                console.log(`Checking icon ${index}:`, icon.className);
+
+                // Check if the icon is properly rendered by Font Awesome
+                const computedStyle = window.getComputedStyle(icon, '::before');
+                const content = computedStyle.getPropertyValue('content');
+
+                console.log(`Icon ${index} content:`, content);
+
+                // If Font Awesome isn't working (content is 'none' or empty), use fallback
+                if (!content || content === 'none' || content === '""' || content === 'normal') {
+                    const fallback = icon.getAttribute('data-fallback');
+                    if (fallback) {
+                        console.log(`Using fallback for icon ${index}:`, fallback);
+                        icon.innerHTML = fallback;
+                        icon.style.fontFamily = 'inherit';
+                        icon.style.fontSize = '1.1rem'; // Match the CSS font size
+                        icon.style.display = 'flex';
+                        icon.style.alignItems = 'center';
+                        icon.style.justifyContent = 'center';
+                    }
+                } else {
+                    console.log(`Font Awesome working for icon ${index}`);
+                }
+            });
+        }, 1000); // Give Font Awesome more time to load
     }
 
     populateContactSection() {

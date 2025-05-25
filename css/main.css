@@ -1916,6 +1916,47 @@ select,
   margin-bottom: 1.5rem;
 }
 
+.project-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+.header-link i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
+}
+.header-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: scale(1.1);
+}
+.header-link.github-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #f0f6fc;
+}
+.header-link.live-demo:hover {
+  background: rgba(0, 255, 255, 0.2);
+  color: #00ffff;
+}
+
 .project-icon {
   font-size: 2rem;
   color: #00ffff;
@@ -2282,6 +2323,198 @@ select,
 }
 .project-card:nth-child(12) {
   transition-delay: 1.2s;
+}
+
+.project-detail-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+.project-detail-panel.active {
+  opacity: 1;
+  visibility: visible;
+}
+.project-detail-panel.active .detail-panel-content {
+  transform: translateX(0);
+}
+
+.detail-panel-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  overflow-y: auto;
+}
+@media (max-width: 768px) {
+  .detail-panel-content {
+    max-width: 100%;
+  }
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 1;
+}
+
+.detail-icon {
+  font-size: 2.5rem;
+}
+
+.detail-title {
+  flex: 1;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.detail-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.detail-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.detail-body {
+  padding: 2rem;
+}
+
+.detail-description,
+.detail-features,
+.detail-tech,
+.detail-cry-reason {
+  margin-bottom: 2rem;
+}
+.detail-description h3, .detail-description h4,
+.detail-features h3,
+.detail-features h4,
+.detail-tech h3,
+.detail-tech h4,
+.detail-cry-reason h3,
+.detail-cry-reason h4 {
+  color: #00ffff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.detail-description p,
+.detail-features p,
+.detail-tech p,
+.detail-cry-reason p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.detail-description ul,
+.detail-features ul,
+.detail-tech ul,
+.detail-cry-reason ul {
+  list-style: none;
+  padding: 0;
+}
+.detail-description ul li,
+.detail-features ul li,
+.detail-tech ul li,
+.detail-cry-reason ul li {
+  color: #ccc;
+  padding: 0.25rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.detail-description ul li::before,
+.detail-features ul li::before,
+.detail-tech ul li::before,
+.detail-cry-reason ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #00ffff;
+}
+
+.detail-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.detail-tech-tags .tech-tag {
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 4px;
+  color: #00ffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.detail-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.detail-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.detail-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+.detail-link.github:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #f0f6fc;
+}
+.detail-link.live-demo:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  color: #00ffff;
+}
+.detail-link i {
+  font-size: 1.1rem;
 }
 
 .contact-section {

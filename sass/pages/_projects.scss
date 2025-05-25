@@ -156,6 +156,51 @@
   margin-bottom: $spacing-lg;
 }
 
+.project-header-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: $gray-light;
+  text-decoration: none;
+  transition: all $transition-normal;
+  font-size: 1.1rem; // Increased font size for better icon visibility
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: inherit; // Ensure icon inherits the larger font size
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: $white;
+    transform: scale(1.1);
+  }
+
+  &.github-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #f0f6fc;
+  }
+
+  &.live-demo:hover {
+    background: rgba(0, 255, 255, 0.2);
+    color: $primary-cyan;
+  }
+}
+
 .project-icon {
   font-size: 2rem;
   color: $primary-cyan;
@@ -482,5 +527,192 @@
     &:nth-child(#{$i}) {
       transition-delay: #{$i * 0.1}s;
     }
+  }
+}
+
+// Project Detail Panel
+.project-detail-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($black, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: $z-index-cursor - 1; // Lower than cursor z-index to keep cursor visible
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+
+    .detail-panel-content {
+      transform: translateX(0);
+    }
+  }
+}
+
+.detail-panel-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  background: rgba($black, 0.95);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba($white, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  border-bottom: 1px solid rgba($white, 0.1);
+  position: sticky;
+  top: 0;
+  background: rgba($black, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 1;
+}
+
+.detail-icon {
+  font-size: 2.5rem;
+}
+
+.detail-title {
+  flex: 1;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $white;
+  margin: 0;
+}
+
+.detail-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba($white, 0.1);
+  color: $gray-light;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover {
+    background: rgba($white, 0.2);
+    color: $white;
+    transform: scale(1.1);
+  }
+}
+
+.detail-body {
+  padding: $spacing-xl;
+}
+
+.detail-description,
+.detail-features,
+.detail-tech,
+.detail-cry-reason {
+  margin-bottom: $spacing-xl;
+
+  h3, h4 {
+    color: $primary-cyan;
+    margin-bottom: $spacing-md;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: $gray-light;
+    line-height: 1.6;
+    margin-bottom: $spacing-md;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      color: $gray-light;
+      padding: $spacing-xs 0;
+      position: relative;
+      padding-left: $spacing-lg;
+
+      &::before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: $primary-cyan;
+      }
+    }
+  }
+}
+
+.detail-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+
+  .tech-tag {
+    padding: $spacing-xs $spacing-sm;
+    background: rgba($primary-cyan, 0.1);
+    border: 1px solid rgba($primary-cyan, 0.3);
+    border-radius: $border-radius-sm;
+    color: $primary-cyan;
+    font-size: $font-size-sm;
+    font-weight: 500;
+  }
+}
+
+.detail-links {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.detail-link {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($white, 0.05);
+  border: 1px solid rgba($white, 0.1);
+  border-radius: $border-radius-md;
+  color: $white;
+  text-decoration: none;
+  transition: all $transition-normal;
+  font-weight: 500;
+
+  &:hover {
+    background: rgba($white, 0.1);
+    border-color: rgba($white, 0.2);
+    transform: translateY(-2px);
+  }
+
+  &.github:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #f0f6fc;
+  }
+
+  &.live-demo:hover {
+    border-color: rgba($primary-cyan, 0.5);
+    color: $primary-cyan;
+  }
+
+  i {
+    font-size: 1.1rem;
   }
 }
