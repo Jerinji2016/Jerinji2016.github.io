@@ -142,7 +142,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: $border-radius-lg;
   padding: $spacing-xl;
-  transition: transform $transition-normal, box-shadow $transition-normal, border-color $transition-normal;
+  transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
   cursor: none;
 
   &:hover {
