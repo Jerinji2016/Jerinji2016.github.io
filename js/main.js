@@ -278,22 +278,44 @@ class PortfolioApp {
 
 
     setupScrollEffects() {
-        // Intersection Observer for section animations
-        const sections = document.querySelectorAll('.section, .hero');
+        // Simple and reliable scroll-based navigation detection
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                this.updateNavigationOnScroll();
+            }, 50); // Reduced timeout for more responsive detection
+        });
 
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    this.currentSection = entry.target.id;
-                    this.updateActiveNavLink(entry.target.id);
-                }
-            });
-        }, { threshold: 0.3 });
+        // Initial call to set the correct active section on page load
+        setTimeout(() => {
+            this.updateNavigationOnScroll();
+        }, 100);
+    }
+
+    updateNavigationOnScroll() {
+        const sections = document.querySelectorAll('.section, .hero');
+        const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+
+        let activeSection = null;
+        let minDistance = Infinity;
 
         sections.forEach(section => {
-            sectionObserver.observe(section);
+            const rect = section.getBoundingClientRect();
+            const sectionTop = rect.top + window.pageYOffset;
+            const sectionCenter = sectionTop + rect.height / 2;
+            const distance = Math.abs(scrollPosition - sectionCenter);
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                activeSection = section;
+            }
         });
+
+        if (activeSection && activeSection.id && activeSection.id !== this.currentSection) {
+            this.currentSection = activeSection.id;
+            this.updateActiveNavLink(activeSection.id);
+        }
     }
 
     hideLoading() {
