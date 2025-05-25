@@ -317,26 +317,26 @@ class PortfolioApp {
 
         console.log('Contact content found, contact data:', portfolioData.contact);
 
-        // Create contact HTML
-        let contactHTML = '<div class="contact-grid"><div class="contact-info">';
+        // Create contact HTML with icon buttons and tooltips
+        let contactHTML = '<div class="contact-grid">';
         contactHTML += '<p class="contact-intro">Ready to bring your ideas to life? Let\'s connect and create something amazing together!</p>';
         contactHTML += '<div class="contact-methods">';
 
         portfolioData.contact.forEach(contact => {
             contactHTML += `
-                <a href="${contact.link}" class="contact-method" target="_blank" rel="noopener noreferrer">
-                    <div class="contact-icon">
-                        <i class="${contact.icon}"></i>
-                    </div>
-                    <div class="contact-details">
-                        <span class="contact-label">${contact.label}</span>
-                        <span class="contact-value">${contact.value}</span>
-                    </div>
+                <a href="${contact.link}" class="contact-method" target="_blank" rel="noopener noreferrer" data-contact="${contact.type}">
+                    <div class="contact-icon" data-feather="${contact.featherIcon}" data-ion="${contact.ionIcon}" data-unicode="${contact.unicode}"></div>
+                    <div class="contact-tooltip">${contact.label}: ${contact.value}</div>
                 </a>
             `;
         });
 
-        contactHTML += '</div></div></div>';
+        contactHTML += '</div>';
+
+        // Add availability status (optional)
+        contactHTML += '<div class="availability-status">Available for new projects</div>';
+
+        contactHTML += '</div>';
         contactContent.innerHTML = contactHTML;
 
         // Add animation classes to make contact methods visible
@@ -345,9 +345,46 @@ class PortfolioApp {
             contactMethods.forEach(method => {
                 method.classList.add('animate');
             });
+
+            // Initialize icons with fallback system
+            this.initializeIcons();
         }, 100);
 
         console.log('Contact section populated successfully');
+    }
+
+    initializeIcons() {
+        const icons = document.querySelectorAll('.contact-icon');
+
+        // Try Feather Icons first
+        if (typeof feather !== 'undefined') {
+            console.log('Using Feather Icons');
+            feather.replace();
+            return;
+        }
+
+        // Fallback to Ionicons
+        icons.forEach(icon => {
+            const ionIcon = icon.getAttribute('data-ion');
+            const unicode = icon.getAttribute('data-unicode');
+
+            if (ionIcon) {
+                console.log('Using Ionicons for:', ionIcon);
+                icon.innerHTML = `<ion-icon name="${ionIcon}"></ion-icon>`;
+                return;
+            }
+
+            // Final fallback to Unicode
+            if (unicode) {
+                console.log('Using Unicode fallback for:', unicode);
+                icon.innerHTML = unicode;
+                icon.style.fontFamily = 'inherit';
+                icon.style.fontSize = 'inherit';
+                icon.style.display = 'flex';
+                icon.style.alignItems = 'center';
+                icon.style.justifyContent = 'center';
+            }
+        });
     }
 
 

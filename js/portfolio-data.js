@@ -6,10 +6,10 @@ const portfolioData = {
         name: "Jerin P Jimmy",
         title: "Full Stack Developer & Creative Technologist",
         email: "jerinji2016@gmail.com",
-        phone: "+91 7012788627",
+        linkedin: "https://www.linkedin.com/in/jerin-p-jimmy/",
         github: "https://github.com/Jerinji2016",
         telegram: "https://t.me/Jerinji2016",
-        instagram: "https://www.instagram.com/_jerin98_/",
+
         bio: "Passionate developer with expertise in mobile and web technologies. I love creating innovative solutions that bridge the gap between functionality and user experience. Always exploring new technologies and pushing the boundaries of what's possible in digital development."
     },
 
@@ -297,37 +297,38 @@ const portfolioData = {
         {
             type: "email",
             value: "jerinji2016@gmail.com",
-            icon: "fas fa-envelope",
+            featherIcon: "mail",
+            ionIcon: "mail-outline",
+            unicode: "✉",
             link: "mailto:jerinji2016@gmail.com",
             label: "Email"
         },
         {
-            type: "phone",
-            value: "+91 7012788627",
-            icon: "fas fa-phone",
-            link: "tel:+917012788627",
-            label: "Phone"
+            type: "linkedin",
+            value: "Jerin P Jimmy",
+            featherIcon: "linkedin",
+            ionIcon: "logo-linkedin",
+            unicode: "💼",
+            link: "https://www.linkedin.com/in/jerin-jimmy-998679180/",
+            label: "LinkedIn"
         },
         {
             type: "github",
             value: "Jerinji2016",
-            icon: "fab fa-github",
+            featherIcon: "github",
+            ionIcon: "logo-github",
+            unicode: "🐙",
             link: "https://github.com/Jerinji2016",
             label: "GitHub"
         },
         {
             type: "telegram",
             value: "@Jerinji2016",
-            icon: "fab fa-telegram",
+            featherIcon: "send",
+            ionIcon: "send-outline",
+            unicode: "✈",
             link: "https://t.me/Jerinji2016",
             label: "Telegram"
-        },
-        {
-            type: "instagram",
-            value: "@_jerin98_",
-            icon: "fab fa-instagram",
-            link: "https://www.instagram.com/_jerin98_/",
-            label: "Instagram"
         }
     ]
 };
