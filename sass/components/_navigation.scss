@@ -21,6 +21,7 @@
   @include flex-between;
   max-width: $breakpoint-large;
   margin: 0 auto;
+  padding: 0 $spacing-lg;
 }
 
 // Logo

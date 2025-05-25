@@ -113,11 +113,9 @@ a {
 
 ul,
 ol {
-  margin-bottom: $spacing-md;
   padding-left: $spacing-lg;
   
   li {
-    margin-bottom: $spacing-sm;
     color: $gray-medium;
     
     &::marker {
